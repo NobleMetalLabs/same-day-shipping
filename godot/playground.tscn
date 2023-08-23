@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1y5yjxkpwja5"]
+
+[ext_resource type="PackedScene" uid="uid://6sjnygmjqox3" path="res://player.tscn" id="1_gyfu3"]
+[ext_resource type="Environment" uid="uid://dn8xx3fip4k03" path="res://environment.tres" id="2_mbjgd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_edeh7"]
+size = Vector2(15, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jwp2g"]
+data = PackedVector3Array(7.5, 0, 7.5, -7.5, 0, 7.5, 7.5, 0, -7.5, -7.5, 0, 7.5, -7.5, 0, -7.5, 7.5, 0, -7.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_edeh7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jwp2g")
+
+[node name="ramp1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.48775, 0, 0, 0, 1.46298, -0.270355, 0, 0.270355, 1.46298, -5.52299, -0.095183, -5.31965)
+use_collision = true
+size = Vector3(2.24885, 1, 5.21469)
+
+[node name="ramp2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.48775, 0, 0, 0, 1.38172, -0.551586, 0, 0.551586, 1.38172, -1.82482, 0.737127, -5.56577)
+use_collision = true
+size = Vector3(2.24885, 1, 5.21469)
+
+[node name="ramp3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.48775, 0, 0, 0, 1.07875, -1.02455, 0, 1.02455, 1.07875, 1.56324, 1.59067, -4.45017)
+use_collision = true
+size = Vector3(2.24885, 1, 5.21469)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 5.77168, 1.33064, 5.81627)
+use_collision = true
+size = Vector3(1, 4.87412, 1)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 5.38804, 0.491845, 5.37278)
+use_collision = true
+radius = 1.84252
+height = 1.92544
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 2.91471, 0.261837, 5.73956)
+use_collision = true
+radius = 1.20236
+height = 0.836219
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_gyfu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.875178, 0.273067, 0.399373, -0.483802, 0.493967, 0.722449, 0, -0.825488, 0.56442, 0, 5.75646, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_mbjgd")
