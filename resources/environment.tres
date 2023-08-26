@@ -1,0 +1,24 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dn8xx3fip4k03"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5aobr"]
+sky_top_color = Color(0, 0.227451, 0.54902, 1)
+sky_horizon_color = Color(0.458824, 0.458824, 0.458824, 1)
+sky_curve = 0.0265164
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.2, 0.168627, 0.133333, 1)
+sun_angle_max = 17.64
+sun_curve = 0.0989632
+
+[sub_resource type="Sky" id="Sky_rpfpi"]
+sky_material = SubResource("ProceduralSkyMaterial_5aobr")
+radiance_size = 6
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_rpfpi")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+ssao_enabled = true
+sdfgi_enabled = true
+adjustment_brightness = 0.01
