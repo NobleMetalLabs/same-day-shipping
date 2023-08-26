@@ -1,8 +1,6 @@
 # Same Day Shipping
 
-Same Day Shipping is a love letter to Source Engine movement, lo-fi hip hop, and the beauty of nature.
-
-`Movement`, `Relaxing`, `Nature`, `Atmospheric`, `Great Soundtrack`
+Same Day Shipping is a love letter to Source Engine movement, chill beats, and the beauty of nature.
 
 ## Overview
 
@@ -27,7 +25,7 @@ All areas are found in relative disarray and have been overtaken by nature. You 
 
 To do so, you are equipped with a grappling hook, a double jump, wallrunning, and Source Engine movement exploits:
 
-- Air Strafing,
+- Air Strafing
 - Bunnyhopping
 - ABH
 - Edgebugs
