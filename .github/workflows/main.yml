@@ -1,0 +1,50 @@
+name: BUILD
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  export:
+    name: Godot Export
+    runs-on: ubuntu-latest
+    permissions:
+          contents: write
+    steps:
+      - name: install wine
+        id: wine_install
+        run: |
+          sudo apt install wine64
+          echo "WINE_PATH=$(which wine64)" >> $GITHUB_OUTPUT
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: export
+        id: export
+        uses: firebelley/godot-export@v5.1.0
+        with:
+          # The download url of the Linux Headless Godot executable.
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.0.2-stable/Godot_v4.0.2-stable_linux.x86_64.zip
+          # The url of the export templates corresponding to the Godot executable version.
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.0.2-stable/Godot_v4.0.2-stable_export_templates.tpz
+          # The path relative to the root of the git repository that contains the "project.godot" file.
+          relative_project_path: ./
+          # If "true" Godot will export in debug mode.
+          export_debug: false
+          # Export project files as a .pck file.
+          export_as_pack: false
+          # Wine path, for Windows icon changing.
+          wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
+      # This release action has worked well for me. However, you can most likely use any release action of your choosing.
+      # https://github.com/ncipollo/release-action
+      - name: create release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.build_directory }}/*/*.exe
+          allowUpdates: true
+          commit: main
+    
