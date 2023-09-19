@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=24 format=3 uid="uid://djdvvewfn86x2"]
+[gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://djdvvewfn86x2"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_eb7oa"]
-parameter_name = "WindColor"
+parameter_name = "TipColor"
 default_value_enabled = true
 default_value = Color(0.384314, 0.529412, 0.301961, 1)
 
@@ -23,6 +23,9 @@ function = 31
 parameter_name = "BaseColor"
 default_value_enabled = true
 default_value = Color(0.141176, 0.156863, 0.0745098, 1)
+
+[sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_kw5xd"]
+default_input_values = [0, 100.0, 1, 0.0]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_hx30t"]
 
@@ -77,11 +80,11 @@ parameter_name = "WindNoise"
 
 [resource]
 code = "shader_type spatial;
-render_mode cull_disabled, diffuse_toon;
+render_mode depth_draw_always, cull_disabled, diffuse_toon;
 
 uniform sampler2D WindNoise;
 uniform vec4 BaseColor : source_color = vec4(0.141176, 0.156863, 0.074510, 1.000000);
-uniform vec4 WindColor : source_color = vec4(0.384314, 0.529412, 0.301961, 1.000000);
+uniform vec4 TipColor : source_color = vec4(0.384314, 0.529412, 0.301961, 1.000000);
 
 
 
@@ -160,7 +163,7 @@ void fragment() {
 
 
 // ColorParameter:13
-	vec4 n_out13p0 = WindColor;
+	vec4 n_out13p0 = TipColor;
 
 
 // Input:14
@@ -180,6 +183,12 @@ void fragment() {
 	vec3 n_out15p0 = mix(vec3(n_out18p0.xyz), vec3(n_out13p0.xyz), vec3(n_out17p0));
 
 
+// DistanceFade:19
+	float n_in19p0 = 100.00000;
+	float n_in19p1 = 0.00000;
+	float n_out19p0 = clamp(smoothstep(n_in19p0, n_in19p1,-VERTEX.z),0.0,1.0);
+
+
 // FloatConstant:4
 	float n_out4p0 = 0.000000;
 
@@ -193,6 +202,7 @@ void fragment() {
 
 // Output:0
 	ALBEDO = n_out15p0;
+	ALPHA = n_out19p0;
 	ROUGHNESS = n_out4p0;
 	NORMAL = n_out5p0;
 	NORMAL_MAP = n_out5p0;
@@ -200,7 +210,8 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-455.005, -26.6961)
+graph_offset = Vector2(-748.846, -94.6073)
+modes/depth_draw = 1
 modes/cull = 2
 modes/diffuse = 3
 nodes/vertex/0/position = Vector2(1320, 520)
@@ -241,7 +252,7 @@ nodes/fragment/4/position = Vector2(-60, 560)
 nodes/fragment/5/node = SubResource("VisualShaderNodeVectorCompose_e07qa")
 nodes/fragment/5/position = Vector2(-40, 720)
 nodes/fragment/13/node = SubResource("VisualShaderNodeColorParameter_eb7oa")
-nodes/fragment/13/position = Vector2(-940, 0)
+nodes/fragment/13/position = Vector2(-940, -20)
 nodes/fragment/14/node = SubResource("VisualShaderNodeInput_ji4ym")
 nodes/fragment/14/position = Vector2(-1500, 440)
 nodes/fragment/15/node = SubResource("VisualShaderNodeMix_cwr4q")
@@ -252,4 +263,6 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_vdvvf")
 nodes/fragment/17/position = Vector2(-500, 440)
 nodes/fragment/18/node = SubResource("VisualShaderNodeColorParameter_cou3i")
 nodes/fragment/18/position = Vector2(-940, -440)
-nodes/fragment/connections = PackedInt32Array(4, 0, 0, 3, 14, 0, 16, 0, 17, 0, 15, 2, 13, 0, 15, 1, 18, 0, 15, 0, 16, 1, 17, 0, 15, 0, 0, 0, 5, 0, 0, 8, 5, 0, 0, 9)
+nodes/fragment/19/node = SubResource("VisualShaderNodeDistanceFade_kw5xd")
+nodes/fragment/19/position = Vector2(-40, 220)
+nodes/fragment/connections = PackedInt32Array(14, 0, 16, 0, 17, 0, 15, 2, 13, 0, 15, 1, 18, 0, 15, 0, 16, 1, 17, 0, 15, 0, 0, 0, 5, 0, 0, 8, 5, 0, 0, 9, 4, 0, 0, 3, 19, 0, 0, 1)

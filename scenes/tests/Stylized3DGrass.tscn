@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3]
+[gd_scene load_steps=27 format=3 uid="uid://cldvoe0sq7qi0"]
 
-[ext_resource type="Material" path="res://assets/materials/Stylized3DGrass.tres" id="1_mon8u"]
-[ext_resource type="PackedScene" uid="uid://byyfqpvhd6j0j" path="res://scenes/objects/player.tscn" id="2_rp7rg"]
+[ext_resource type="Material" uid="uid://bnf3vwtuhy2q7" path="res://assets/materials/Stylized3DGrass.tres" id="1_mon8u"]
+[ext_resource type="Shader" uid="uid://dclb5vkmr1ioo" path="res://assets/shaders/WheatShader.tres" id="2_h7r4h"]
+[ext_resource type="PackedScene" uid="uid://ri62cf8h14pg" path="res://scenes/objects/player.tscn" id="2_rp7rg"]
 [ext_resource type="ArrayMesh" uid="uid://cgpjl6gspys07" path="res://assets/models/City1 Block 1.obj" id="3_fjpa2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_isp5m"]
@@ -126,6 +127,12 @@ albedo_color = Color(0.282353, 0.462745, 0.215686, 1)
 material = SubResource("StandardMaterial3D_yoclh")
 size = Vector2(44, 44)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afsra"]
+render_priority = 0
+shader = ExtResource("2_h7r4h")
+shader_parameter/BaseColor = Color(0.5, 0.421, 0.105, 1)
+shader_parameter/WindColor = Color(0.83, 0.78684, 0.1826, 1)
+
 [sub_resource type="MultiMesh" id="MultiMesh_ag51o"]
 transform_format = 1
 instance_count = 25000
@@ -150,9 +157,9 @@ shadow_enabled = true
 
 [node name="grass" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26862, 0)
-visible = false
 
 [node name="Grass" type="MeshInstance3D" parent="grass"]
+visible = false
 mesh = SubResource("ArrayMesh_qbofm")
 skeleton = NodePath("")
 
@@ -180,7 +187,7 @@ skeleton = NodePath("../..")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26222, 0)
-material_override = ExtResource("1_mon8u")
+material_override = SubResource("ShaderMaterial_afsra")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_ag51o")
 
