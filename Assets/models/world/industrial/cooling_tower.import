@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dus2asmmnx4a6"
-path="res://.godot/imported/coolingtower.blend-9c8012f47aa1cdb5062b89d5506b27a6.scn"
+path="res://.godot/imported/coolingtower.blend-c28c968e7878baf35c8fe3dbf473e30c.scn"
 
 [deps]
 
-source_file="res://assets/models/world/industrial/coolingtower.blend"
-dest_files=["res://.godot/imported/coolingtower.blend-9c8012f47aa1cdb5062b89d5506b27a6.scn"]
+source_file="res://Assets/models/world/industrial/coolingtower.blend"
+dest_files=["res://.godot/imported/coolingtower.blend-c28c968e7878baf35c8fe3dbf473e30c.scn"]
 
 [params]
 

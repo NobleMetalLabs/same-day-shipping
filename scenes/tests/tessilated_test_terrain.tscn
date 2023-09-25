@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2mhs8hl62ii"]
+
+[ext_resource type="PackedScene" uid="uid://dj7vc3q6xrkjk" path="res://Assets/models/tessilated_test_terrain.blend" id="1_usfur"]
+[ext_resource type="Material" uid="uid://6fnbo005pg7t" path="res://Assets/materials/WheatGround.tres" id="2_yuxb0"]
+
+[node name="tessilated_test_terrain" instance=ExtResource("1_usfur")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane002" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane003" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane004" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane005" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane006" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane007" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_yuxb0")
+
+[node name="Plane008" parent="." index="8"]
+surface_material_override/0 = ExtResource("2_yuxb0")

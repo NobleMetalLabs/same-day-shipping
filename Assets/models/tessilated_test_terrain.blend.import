@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctcxbxathuyhe"
-path="res://.godot/imported/elevator.blend-1a95a3dd8eeb68995a3cad185011fa87.scn"
+uid="uid://dj7vc3q6xrkjk"
+path="res://.godot/imported/tessilated_test_terrain.blend-46cd9183af76d1c4f1a66253566a3fa7.scn"
 
 [deps]
 
-source_file="res://Assets/models/world/farmlands/elevator.blend"
-dest_files=["res://.godot/imported/elevator.blend-1a95a3dd8eeb68995a3cad185011fa87.scn"]
+source_file="res://Assets/models/tessilated_test_terrain.blend"
+dest_files=["res://.godot/imported/tessilated_test_terrain.blend-46cd9183af76d1c4f1a66253566a3fa7.scn"]
 
 [params]
 

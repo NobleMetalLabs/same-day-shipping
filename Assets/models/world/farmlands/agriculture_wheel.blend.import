@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cqxa0s68bra2i"
-path="res://.godot/imported/agriculture_wheel.blend-5ba02ae172e526617ac3c4440f41f21e.scn"
+path="res://.godot/imported/agriculture_wheel.blend-8adc1a2494318b5039d55758884cdbf0.scn"
 
 [deps]
 
-source_file="res://assets/models/world/farmlands/agriculture_wheel.blend"
-dest_files=["res://.godot/imported/agriculture_wheel.blend-5ba02ae172e526617ac3c4440f41f21e.scn"]
+source_file="res://Assets/models/world/farmlands/agriculture_wheel.blend"
+dest_files=["res://.godot/imported/agriculture_wheel.blend-8adc1a2494318b5039d55758884cdbf0.scn"]
 
 [params]
 
