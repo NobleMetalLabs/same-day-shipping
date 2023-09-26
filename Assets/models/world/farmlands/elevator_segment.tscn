@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6hcwwxotgtdk"]
+
+[ext_resource type="PackedScene" uid="uid://ctcxbxathuyhe" path="res://assets/models/world/farmlands/elevator.blend" id="1_kdvvc"]
+
+[node name="elevator" instance=ExtResource("1_kdvvc")]
+
+[node name="base" parent="." index="0"]
+visible = false
+
+[node name="segment" parent="." index="1"]
+transform = Transform3D(0.924665, 0, 0, 0, 0.924665, 0, 0, 0, 0.924665, 0, 0.1168, 0)

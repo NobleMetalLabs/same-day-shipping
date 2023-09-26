@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://sehrt1dm4q6h"
-path="res://.godot/imported/shippingcrane.blend-a166658f8ec2c685ff4fbba53395930b.scn"
+path="res://.godot/imported/shippingcrane.blend-c516be824fd456a5e15799db56a900be.scn"
 
 [deps]
 
-source_file="res://assets/models/world/industrial/shippingcrane.blend"
-dest_files=["res://.godot/imported/shippingcrane.blend-a166658f8ec2c685ff4fbba53395930b.scn"]
+source_file="res://Assets/models/world/industrial/shippingcrane.blend"
+dest_files=["res://.godot/imported/shippingcrane.blend-c516be824fd456a5e15799db56a900be.scn"]
 
 [params]
 

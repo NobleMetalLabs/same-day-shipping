@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d034155f4qjdo"
-path="res://.godot/imported/transmissiontower.blend-e5eb1671a15881a3daa04d4de0e4e7e1.scn"
+path="res://.godot/imported/transmissiontower.blend-1370bf6d4ee59e3732e966b2f90c5f3d.scn"
 
 [deps]
 
-source_file="res://assets/models/world/general/transmissiontower.blend"
-dest_files=["res://.godot/imported/transmissiontower.blend-e5eb1671a15881a3daa04d4de0e4e7e1.scn"]
+source_file="res://Assets/models/world/general/transmissiontower.blend"
+dest_files=["res://.godot/imported/transmissiontower.blend-1370bf6d4ee59e3732e966b2f90c5f3d.scn"]
 
 [params]
 

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://6fnbo005pg7t"]
+
+[ext_resource type="Shader" uid="uid://bb0mdqivmvxa2" path="res://assets/shaders/GrassGroundShader.tres" id="1_3xgtu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3xgtu")
+shader_parameter/FarColor = Color(0.54902, 0.545098, 0.27451, 1)
+shader_parameter/NearColor = Color(0.160784, 0.141176, 0.0784314, 1)

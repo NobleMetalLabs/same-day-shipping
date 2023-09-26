@@ -1,0 +1,68 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://bb0mdqivmvxa2"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_eb7oa"]
+parameter_name = "NearColor"
+default_value_enabled = true
+default_value = Color(0.384314, 0.529412, 0.301961, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_cwr4q"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cou3i"]
+parameter_name = "FarColor"
+default_value_enabled = true
+default_value = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_kw5xd"]
+default_input_values = [0, 100.0, 1, 0.0]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_toon, specular_disabled;
+
+uniform vec4 FarColor : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+uniform vec4 NearColor : source_color = vec4(0.384314, 0.529412, 0.301961, 1.000000);
+
+
+
+void fragment() {
+// ColorParameter:18
+	vec4 n_out18p0 = FarColor;
+
+
+// ColorParameter:13
+	vec4 n_out13p0 = NearColor;
+
+
+// DistanceFade:19
+	float n_in19p0 = 100.00000;
+	float n_in19p1 = 0.00000;
+	float n_out19p0 = clamp(smoothstep(n_in19p0, n_in19p1,-VERTEX.z),0.0,1.0);
+
+
+// Mix:15
+	vec3 n_out15p0 = mix(vec3(n_out18p0.xyz), vec3(n_out13p0.xyz), vec3(n_out19p0));
+
+
+// Output:0
+	ALBEDO = n_out15p0;
+
+
+}
+"
+graph_offset = Vector2(-549.004, -312.873)
+modes/cull = 2
+modes/diffuse = 3
+modes/specular = 2
+nodes/vertex/0/position = Vector2(1320, 520)
+nodes/fragment/0/position = Vector2(320, -260)
+nodes/fragment/13/node = SubResource("VisualShaderNodeColorParameter_eb7oa")
+nodes/fragment/13/position = Vector2(-920, -220)
+nodes/fragment/15/node = SubResource("VisualShaderNodeMix_cwr4q")
+nodes/fragment/15/position = Vector2(-120, -300)
+nodes/fragment/18/node = SubResource("VisualShaderNodeColorParameter_cou3i")
+nodes/fragment/18/position = Vector2(-920, -420)
+nodes/fragment/19/node = SubResource("VisualShaderNodeDistanceFade_kw5xd")
+nodes/fragment/19/position = Vector2(-140, -80)
+nodes/fragment/connections = PackedInt32Array(13, 0, 15, 1, 18, 0, 15, 0, 19, 0, 15, 2, 15, 0, 0, 0)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://v3t65eg4pala"
-path="res://.godot/imported/traincar.blend-81fe088a78edc9c2e8a7a72fb50d9d52.scn"
+path="res://.godot/imported/traincar.blend-42c2fa0b4a012a0180906fda57372a9d.scn"
 
 [deps]
 
-source_file="res://assets/models/world/industrial/traincar.blend"
-dest_files=["res://.godot/imported/traincar.blend-81fe088a78edc9c2e8a7a72fb50d9d52.scn"]
+source_file="res://Assets/models/world/industrial/traincar.blend"
+dest_files=["res://.godot/imported/traincar.blend-42c2fa0b4a012a0180906fda57372a9d.scn"]
 
 [params]
 
