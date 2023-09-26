@@ -119,7 +119,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83857, -2.60983, -11.0648)
 [node name="combine" parent="." instance=ExtResource("9_54jx0")]
 transform = Transform3D(-4.36698e-08, 1.90666e-09, 1, 0.0436194, 0.999048, 0, -0.999048, 0.0436194, -4.37114e-08, -362.713, -4.87264, 97.4619)
 script = ExtResource("6_h3mbr")
-movement_vector = Vector3(1000, 0, 0)
+movement_vector = Vector3(500, 0, 0)
+travel_back_to_start = true
 linear = true
 movement_time = 240.0
 

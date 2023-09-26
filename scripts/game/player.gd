@@ -61,7 +61,6 @@ func get_wish_dir() -> Vector2:
 	wish_dir = Vector3(wish_dir.x, 0, wish_dir.y)
 	wish_dir = camera.transform.basis * wish_dir
 	wish_dir = Vector2(wish_dir.x, wish_dir.z).normalized()
-	print(wish_dir)
 	return wish_dir
 	
 func get_new_horizontal_velocity(wish_dir : Vector2, delta: float) -> Vector2:
