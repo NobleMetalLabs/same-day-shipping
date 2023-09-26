@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bmue8k35p15po"
-path="res://.godot/imported/elevator_carraige.blend-fc4be49052704b65f5ff0ef02275c513.scn"
+uid="uid://byofpc53ueqdo"
+path="res://.godot/imported/forklift.blend-521feca3665299ecd9df8bffe1f7f407.scn"
 
 [deps]
 
-source_file="res://assets/models/world/farmlands/elevator_carraige.blend"
-dest_files=["res://.godot/imported/elevator_carraige.blend-fc4be49052704b65f5ff0ef02275c513.scn"]
+source_file="res://assets/models/world/industrial/forklift.blend"
+dest_files=["res://.godot/imported/forklift.blend-521feca3665299ecd9df8bffe1f7f407.scn"]
 
 [params]
 

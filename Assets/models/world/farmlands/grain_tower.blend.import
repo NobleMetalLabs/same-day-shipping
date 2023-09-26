@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://weeq2ermfl2b"
-path="res://.godot/imported/grain_tower.blend-bbb1efaaaa1bd538d5fe1d23bd92cd01.scn"
+path="res://.godot/imported/grain_tower.blend-5042ed0f9c1560075d51cc7a9bec783f.scn"
 
 [deps]
 
-source_file="res://Assets/models/world/farmlands/grain_tower.blend"
-dest_files=["res://.godot/imported/grain_tower.blend-bbb1efaaaa1bd538d5fe1d23bd92cd01.scn"]
+source_file="res://assets/models/world/farmlands/grain_tower.blend"
+dest_files=["res://.godot/imported/grain_tower.blend-5042ed0f9c1560075d51cc7a9bec783f.scn"]
 
 [params]
 

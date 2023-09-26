@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dj7vc3q6xrkjk"
-path="res://.godot/imported/tessilated_test_terrain.blend-46cd9183af76d1c4f1a66253566a3fa7.scn"
+path="res://.godot/imported/tessilated_test_terrain.blend-85756539fbe2fb70ac5faca32398d33b.scn"
 
 [deps]
 
-source_file="res://Assets/models/tessilated_test_terrain.blend"
-dest_files=["res://.godot/imported/tessilated_test_terrain.blend-46cd9183af76d1c4f1a66253566a3fa7.scn"]
+source_file="res://assets/models/tessilated_test_terrain.blend"
+dest_files=["res://.godot/imported/tessilated_test_terrain.blend-85756539fbe2fb70ac5faca32398d33b.scn"]
 
 [params]
 

@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://c84rwcl11qwlx"
-path="res://.godot/imported/wheat.obj-544cedc7c907ba8c383557eca4b3d91a.mesh"
+path="res://.godot/imported/wheat.obj-37c90df72e39f2c05a18c189b51d563a.mesh"
 
 [deps]
 
-files=["res://.godot/imported/wheat.obj-544cedc7c907ba8c383557eca4b3d91a.mesh"]
+files=["res://.godot/imported/wheat.obj-37c90df72e39f2c05a18c189b51d563a.mesh"]
 
-source_file="res://Assets/models/wheat.obj"
-dest_files=["res://.godot/imported/wheat.obj-544cedc7c907ba8c383557eca4b3d91a.mesh", "res://.godot/imported/wheat.obj-544cedc7c907ba8c383557eca4b3d91a.mesh"]
+source_file="res://assets/models/wheat.obj"
+dest_files=["res://.godot/imported/wheat.obj-37c90df72e39f2c05a18c189b51d563a.mesh", "res://.godot/imported/wheat.obj-37c90df72e39f2c05a18c189b51d563a.mesh"]
 
 [params]
 

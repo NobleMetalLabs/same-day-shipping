@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dewe5m232k7m8"
-path="res://.godot/imported/test_terrrain.blend-3fe0dae9f358857f636e200a224caef4.scn"
+path="res://.godot/imported/test_terrrain.blend-3852e88a55a055640814c186da53e326.scn"
 
 [deps]
 
-source_file="res://Assets/models/test_terrrain.blend"
-dest_files=["res://.godot/imported/test_terrrain.blend-3fe0dae9f358857f636e200a224caef4.scn"]
+source_file="res://assets/models/test_terrrain.blend"
+dest_files=["res://.godot/imported/test_terrrain.blend-3852e88a55a055640814c186da53e326.scn"]
 
 [params]
 

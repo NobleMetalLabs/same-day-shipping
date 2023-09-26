@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctcxbxathuyhe"
-path="res://.godot/imported/elevator.blend-1a95a3dd8eeb68995a3cad185011fa87.scn"
+path="res://.godot/imported/elevator.blend-541f80f14f6dad9b06aee362deb4ce37.scn"
 
 [deps]
 
-source_file="res://Assets/models/world/farmlands/elevator.blend"
-dest_files=["res://.godot/imported/elevator.blend-1a95a3dd8eeb68995a3cad185011fa87.scn"]
+source_file="res://assets/models/world/farmlands/elevator.blend"
+dest_files=["res://.godot/imported/elevator.blend-541f80f14f6dad9b06aee362deb4ce37.scn"]
 
 [params]
 

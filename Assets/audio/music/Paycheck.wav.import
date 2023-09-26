@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bioflvo65xihv"
-path="res://.godot/imported/Paycheck.wav-905542d238875ed9953aed8c0f2a8fb4.sample"
+path="res://.godot/imported/Paycheck.wav-cbb3edc473072242d12f73ec14a7d1a9.sample"
 
 [deps]
 
-source_file="res://Assets/audio/music/Paycheck.wav"
-dest_files=["res://.godot/imported/Paycheck.wav-905542d238875ed9953aed8c0f2a8fb4.sample"]
+source_file="res://assets/audio/music/Paycheck.wav"
+dest_files=["res://.godot/imported/Paycheck.wav-cbb3edc473072242d12f73ec14a7d1a9.sample"]
 
 [params]
 
