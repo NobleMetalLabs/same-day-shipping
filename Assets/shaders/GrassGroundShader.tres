@@ -19,7 +19,7 @@ default_input_values = [0, 100.0, 1, 0.0]
 
 [resource]
 code = "shader_type spatial;
-render_mode cull_disabled, diffuse_toon, specular_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_toon, specular_disabled;
 
 uniform vec4 FarColor : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
 uniform vec4 NearColor : source_color = vec4(0.384314, 0.529412, 0.301961, 1.000000);

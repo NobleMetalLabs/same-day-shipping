@@ -14,6 +14,7 @@ noise = SubResource("FastNoiseLite_txcs8")
 [resource]
 render_priority = 0
 shader = ExtResource("1_rfpbo")
+shader_parameter/WindScale = 0.01
 shader_parameter/BaseColor = Color(0.160784, 0.141176, 0.0784314, 1)
 shader_parameter/TipColor = Color(0.611765, 0.580392, 0.317647, 1)
 shader_parameter/WindNoise = SubResource("NoiseTexture2D_cpywb")

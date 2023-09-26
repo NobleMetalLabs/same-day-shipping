@@ -1,0 +1,232 @@
+[gd_scene load_steps=24 format=3 uid="uid://dsxnw6fpeo1u8"]
+
+[ext_resource type="PackedScene" uid="uid://byyfqpvhd6j0j" path="res://scenes/objects/player.tscn" id="1_j1oim"]
+[ext_resource type="PackedScene" uid="uid://b2mhs8hl62ii" path="res://scenes/tests/tessilated_test_terrain.tscn" id="2_xf86n"]
+[ext_resource type="PackedScene" uid="uid://ctcxbxathuyhe" path="res://assets/models/world/farmlands/elevator.blend" id="3_247j0"]
+[ext_resource type="PackedScene" uid="uid://c6hcwwxotgtdk" path="res://assets/models/world/farmlands/elevator_segment.tscn" id="4_jh3b6"]
+[ext_resource type="PackedScene" uid="uid://bmue8k35p15po" path="res://assets/models/world/farmlands/elevator_carraige.blend" id="5_3enu2"]
+[ext_resource type="Script" path="res://scripts/world/WorldMover.gd" id="6_h3mbr"]
+[ext_resource type="PackedScene" uid="uid://bof3rniual8pe" path="res://assets/models/world/farmlands/grain_tower_with_chute.blend" id="7_fv3am"]
+[ext_resource type="PackedScene" uid="uid://weeq2ermfl2b" path="res://assets/models/world/farmlands/grain_tower.blend" id="8_5ck6s"]
+[ext_resource type="PackedScene" uid="uid://dgfi1n26n5o80" path="res://assets/models/world/farmlands/combine.blend" id="9_54jx0"]
+[ext_resource type="PackedScene" uid="uid://cqxa0s68bra2i" path="res://assets/models/world/farmlands/agriculture_wheel.blend" id="10_e8k52"]
+[ext_resource type="PackedScene" uid="uid://b4sqvti1xc0og" path="res://assets/models/world/harbor/shipping_container.blend" id="11_7q4t7"]
+[ext_resource type="PackedScene" uid="uid://c6ln3lw7wpj82" path="res://assets/models/world/industrial/large_propane_tank.blend" id="12_7i55a"]
+[ext_resource type="PackedScene" uid="uid://byofpc53ueqdo" path="res://assets/models/world/industrial/forklift.blend" id="13_ai83p"]
+[ext_resource type="PackedScene" uid="uid://c461vmb6ypj3k" path="res://assets/models/world/industrial/pickup_truck.blend" id="13_pf288"]
+[ext_resource type="PackedScene" uid="uid://d3o3xcdb6osy6" path="res://assets/models/world/industrial/semi_truck.blend" id="15_3bgn5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sjxi3"]
+sky_top_color = Color(0.478431, 0.619608, 0.8, 1)
+sky_horizon_color = Color(0.736, 0.7584, 0.8, 1)
+ground_bottom_color = Color(0.478431, 0.619608, 0.8, 1)
+ground_horizon_color = Color(0.736, 0.7584, 0.8, 1)
+ground_curve = 0.15
+
+[sub_resource type="Sky" id="Sky_8jbhc"]
+sky_material = SubResource("ProceduralSkyMaterial_sjxi3")
+
+[sub_resource type="Environment" id="Environment_6bs60"]
+background_mode = 2
+sky = SubResource("Sky_8jbhc")
+tonemap_mode = 2
+ssao_enabled = true
+glow_normalized = true
+glow_bloom = 0.02
+glow_blend_mode = 0
+fog_light_color = Color(1, 1, 1, 1)
+fog_sun_scatter = 0.4
+fog_density = 0.0
+fog_height = 160.77
+fog_height_density = -10.0
+volumetric_fog_density = 0.01
+volumetric_fog_emission = Color(1, 1, 1, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.3
+adjustment_saturation = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeev0"]
+albedo_color = Color(0.54902, 0.545098, 0.27451, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2rd6c"]
+material = SubResource("StandardMaterial3D_qeev0")
+size = Vector2(44, 44)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ijhd"]
+data = PackedVector3Array(22, 0, 22, -22, 0, 22, 22, 0, -22, -22, 0, 22, -22, 0, -22, 22, 0, -22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4pmc0"]
+size = Vector3(25, 20, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k8snm"]
+size = Vector3(2, 0.25, 2)
+
+[node name="farmlands_test" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_j1oim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6208, 5.98709, 14.4002)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6bs60")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.866026, 0.5, 0, 0.5, 0.866026, -1, 3.78552e-08, -2.18557e-08, 0, 91.058, 0)
+shadow_enabled = true
+
+[node name="GrassBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 99.9048, -4.36194, 0, 4.36194, 99.9048, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_2rd6c")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GrassBase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassBase/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ijhd")
+
+[node name="tessilated_test_terrain" parent="." instance=ExtResource("2_xf86n")]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0, 0, 0)
+
+[node name="elevator" parent="." instance=ExtResource("3_247j0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.054, -4.07645, 69.4537)
+
+[node name="elevator" parent="elevator" instance=ExtResource("4_jh3b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 113, 0)
+
+[node name="elevator" parent="elevator/elevator" instance=ExtResource("4_jh3b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0)
+
+[node name="elevator_carraige" parent="elevator" instance=ExtResource("5_3enu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.27959, 0)
+script = ExtResource("6_h3mbr")
+movement_vector = Vector3(0, 250, 0)
+movement_time = 60.0
+
+[node name="grain_tower_with_chute" parent="." instance=ExtResource("7_fv3am")]
+transform = Transform3D(0.895712, 0, -0.444635, 0, 1, 0, 0.444635, 0, 0.895712, -14.6679, -2.28325, 40.8433)
+script = ExtResource("6_h3mbr")
+target_name = &"chute"
+rotation_vector = Vector3(0, 135, 0)
+travel_back_to_start = true
+movement_time = 30.0
+wait_time = 60.0
+
+[node name="grain_tower" parent="." instance=ExtResource("8_5ck6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80037, -2.60983, 44.7149)
+
+[node name="grain_tower" parent="grain_tower" instance=ExtResource("8_5ck6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.83857, -2.60983, -11.0648)
+
+[node name="combine" parent="." instance=ExtResource("9_54jx0")]
+transform = Transform3D(-4.36698e-08, 1.90666e-09, 1, 0.0436194, 0.999048, 0, -0.999048, 0.0436194, -4.37114e-08, -362.713, -4.87264, 97.4619)
+script = ExtResource("6_h3mbr")
+movement_vector = Vector3(1000, 0, 0)
+linear = true
+movement_time = 240.0
+
+[node name="combine" parent="combine" instance=ExtResource("9_54jx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8524, 0, 18.3482)
+
+[node name="combine" parent="combine/combine" instance=ExtResource("9_54jx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9475, 0, 37.0451)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0598, 7.21131, 0)
+mesh = SubResource("BoxMesh_4pmc0")
+
+[node name="agriculture_wheel" parent="MeshInstance3D" instance=ExtResource("10_e8k52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131737, 0.53455, 25.6441)
+script = ExtResource("6_h3mbr")
+rotation_vector = Vector3(0, 0, 360)
+linear = true
+movement_time = 60.0
+
+[node name="shipping_container5" parent="." instance=ExtResource("11_7q4t7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.0436194, 0.999048, 1.90666e-09, -0.999048, 0.0436194, -4.36698e-08, -42.6367, -0.0453362, -10.3777)
+rotation_order = 1
+
+[node name="shipping_container" parent="shipping_container5" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66588, 0, 0)
+
+[node name="shipping_container2" parent="shipping_container5" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 6.66134e-16, 0, 0, 1, -2.74715, 2.55186, -0.108585)
+
+[node name="shipping_container6" parent="." instance=ExtResource("11_7q4t7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.0436194, 0.999048, 1.90666e-09, -0.999048, 0.0436194, -4.36698e-08, -57.0913, 0.544872, -23.4253)
+rotation_order = 1
+
+[node name="shipping_container" parent="shipping_container6" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66588, 0, 0)
+
+[node name="shipping_container2" parent="shipping_container6" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26166, 2.487, -0.108585)
+
+[node name="shipping_container7" parent="." instance=ExtResource("11_7q4t7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.0436194, 0.999048, 1.90666e-09, -0.999048, 0.0436194, -4.36698e-08, -54.5573, 0.905945, -38.3032)
+rotation_order = 1
+
+[node name="shipping_container" parent="shipping_container7" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66588, 0, 0)
+
+[node name="shipping_container2" parent="shipping_container7" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26166, 2.487, -0.108585)
+
+[node name="shipping_container" parent="." instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, -32.5581, 0.582789, -24.3146)
+
+[node name="shipping_container" parent="shipping_container" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66588, 0, 0)
+
+[node name="shipping_container2" parent="shipping_container" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26166, 2.487, -0.108585)
+
+[node name="shipping_container3" parent="shipping_container" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29275, 0.0275257, -0.00120163)
+
+[node name="shipping_container4" parent="shipping_container" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35374, 2.59496, -0.113298)
+
+[node name="large_propane_tank2" parent="." instance=ExtResource("12_7i55a")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0.0872388, 1.9981, 3.81333e-09, -1.9981, 0.0872388, -8.73396e-08, 62.4416, 0.812894, -26.8454)
+rotation_order = 1
+
+[node name="large_propane_tank" parent="." instance=ExtResource("12_7i55a")]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 56.1374, 0.818459, -25.0284)
+
+[node name="epic" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0, 0, 0)
+
+[node name="forklift" parent="epic" instance=ExtResource("13_ai83p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.9548, -0.504801, -12.7332)
+script = ExtResource("6_h3mbr")
+movement_vector = Vector3(0, 0, -30)
+travel_back_to_start = true
+movement_time = 10.0
+wait_time = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="epic/forklift"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64113, 2.03435)
+mesh = SubResource("BoxMesh_k8snm")
+script = ExtResource("6_h3mbr")
+movement_vector = Vector3(0, -2, 0)
+travel_back_to_start = true
+movement_time = 9.0
+wait_time = 4.0
+
+[node name="pickup_truck" parent="epic" instance=ExtResource("13_pf288")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4046, -0.512254, -199.978)
+script = ExtResource("6_h3mbr")
+movement_vector = Vector3(0, 0, 600)
+linear = true
+movement_time = 30.0
+
+[node name="semi_truck" parent="." instance=ExtResource("15_3bgn5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.0436194, 0.999048, 1.90666e-09, -0.999048, 0.0436194, -4.36698e-08, -26.9987, 0.894405, -33.0742)
+rotation_order = 4
+
+[node name="shipping_container8" parent="semi_truck" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 1.9984e-15, 3.19744e-14, 0, 1, 0.209469, 1.01113, -9.28229)
+rotation_order = 1
+
+[node name="shipping_container9" parent="semi_truck" instance=ExtResource("11_7q4t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 2.66454e-15, 4.26326e-14, 0, 1, 0.209007, 3.585, -9.28201)
+rotation_order = 1

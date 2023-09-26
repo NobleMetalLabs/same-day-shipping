@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://djdvvewfn86x2"]
+[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://djdvvewfn86x2"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_eb7oa"]
 parameter_name = "TipColor"
@@ -58,6 +58,11 @@ function = 31
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.1, 0.1, 0.1)]
 operator = 2
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_afpdw"]
+parameter_name = "WindScale"
+default_value_enabled = true
+default_value = 0.1
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_80uja"]
 input_name = "node_position_world"
 
@@ -80,9 +85,10 @@ parameter_name = "WindNoise"
 
 [resource]
 code = "shader_type spatial;
-render_mode depth_draw_always, cull_disabled, diffuse_toon;
+render_mode blend_mix, depth_draw_always, cull_disabled, diffuse_toon, specular_schlick_ggx;
 
 uniform sampler2D WindNoise;
+uniform float WindScale = 0.10000000149012;
 uniform vec4 BaseColor : source_color = vec4(0.141176, 0.156863, 0.074510, 1.000000);
 uniform vec4 TipColor : source_color = vec4(0.384314, 0.529412, 0.301961, 1.000000);
 
@@ -142,9 +148,12 @@ void vertex() {
 	vec3 n_out14p0 = vec3(n_out7p0.xyz) * vec3(n_out18p0);
 
 
+// FloatParameter:23
+	float n_out23p0 = WindScale;
+
+
 // VectorOp:22
-	vec3 n_in22p1 = vec3(0.10000, 0.10000, 0.10000);
-	vec3 n_out22p0 = n_out14p0 * n_in22p1;
+	vec3 n_out22p0 = n_out14p0 * vec3(n_out23p0);
 
 
 // VectorOp:13
@@ -210,7 +219,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-748.846, -94.6073)
+graph_offset = Vector2(40.8433, 847.068)
 modes/depth_draw = 1
 modes/cull = 2
 modes/diffuse = 3
@@ -244,8 +253,10 @@ nodes/vertex/17/position = Vector2(-580, 1400)
 nodes/vertex/18/node = SubResource("VisualShaderNodeFloatFunc_cq3x0")
 nodes/vertex/18/position = Vector2(-200, 1400)
 nodes/vertex/22/node = SubResource("VisualShaderNodeVectorOp_qkcn7")
-nodes/vertex/22/position = Vector2(580, 900)
-nodes/vertex/connections = PackedInt32Array(9, 0, 7, 2, 3, 0, 4, 0, 4, 0, 5, 0, 4, 2, 5, 1, 12, 0, 8, 2, 11, 0, 13, 0, 7, 0, 14, 0, 16, 0, 17, 0, 17, 1, 18, 0, 18, 0, 14, 1, 5, 0, 12, 0, 6, 0, 12, 1, 14, 0, 22, 0, 22, 0, 13, 1, 13, 0, 0, 0, 8, 0, 7, 0)
+nodes/vertex/22/position = Vector2(840, 940)
+nodes/vertex/23/node = SubResource("VisualShaderNodeFloatParameter_afpdw")
+nodes/vertex/23/position = Vector2(460, 1300)
+nodes/vertex/connections = PackedInt32Array(9, 0, 7, 2, 3, 0, 4, 0, 4, 0, 5, 0, 4, 2, 5, 1, 12, 0, 8, 2, 11, 0, 13, 0, 7, 0, 14, 0, 16, 0, 17, 0, 17, 1, 18, 0, 18, 0, 14, 1, 5, 0, 12, 0, 6, 0, 12, 1, 14, 0, 22, 0, 22, 0, 13, 1, 13, 0, 0, 0, 8, 0, 7, 0, 23, 0, 22, 1)
 nodes/fragment/0/position = Vector2(400, 160)
 nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_hx30t")
 nodes/fragment/4/position = Vector2(-60, 560)
