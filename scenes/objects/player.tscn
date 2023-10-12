@@ -1,28 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://byyfqpvhd6j0j"]
+[gd_scene load_steps=7 format=3 uid="uid://ri62cf8h14pg"]
 
-[ext_resource type="Script" path="res://scripts/game/player.gd" id="1_7p0bs"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p1csc"]
+[ext_resource type="Script" path="res://scripts/game/player/player.gd" id="1_dr1b4"]
+[ext_resource type="Script" path="res://scripts/game/PackageThrowLine.gd" id="2_hth0p"]
+[ext_resource type="Script" path="res://scripts/game/player/DEBUG_VECTORS.gd" id="3_neyp5"]
+[ext_resource type="Script" path="res://scripts/game/player/spedometer.gd" id="4_3juge"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mo48a"]
+height = 1.75
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0sfqo"]
+height = 1.75
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 floor_constant_speed = true
 floor_snap_length = 1.0
-script = ExtResource("1_7p0bs")
+script = ExtResource("1_dr1b4")
 camera_sens = 6.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_p1csc")
+camera = NodePath("CameraBone")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 mesh = SubResource("CapsuleMesh_mo48a")
 
-[node name="Camera" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_0sfqo")
 
-[node name="cam" type="Camera3D" parent="Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.398)
+[node name="grappling_hook_obstruction_raycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 1, 0, 1)
+
+[node name="CameraBone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="grappling_hook_targeting_raycast" type="RayCast3D" parent="CameraBone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+target_position = Vector3(-0.5, 0, -30)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="cam_with_offset" type="Camera3D" parent="CameraBone"]
 fov = 90.0
+
+[node name="PackageThrowLine" type="Node3D" parent="."]
+visible = false
+script = ExtResource("2_hth0p")
+
+[node name="DEBUG_VECTORS" type="Node3D" parent="." node_paths=PackedStringArray("velocity", "friction", "wish_dir", "hook_target_dir", "hook_motion_dir")]
+unique_name_in_owner = true
+script = ExtResource("3_neyp5")
+velocity = NodePath("velocity")
+friction = NodePath("friction")
+wish_dir = NodePath("wish_dir")
+hook_target_dir = NodePath("")
+hook_motion_dir = NodePath("")
+
+[node name="velocity" type="RayCast3D" parent="DEBUG_VECTORS"]
+exclude_parent = false
+collision_mask = 0
+debug_shape_custom_color = Color(1, 1, 1, 1)
+
+[node name="friction" type="RayCast3D" parent="DEBUG_VECTORS"]
+exclude_parent = false
+collision_mask = 0
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="wish_dir" type="RayCast3D" parent="DEBUG_VECTORS"]
+exclude_parent = false
+collision_mask = 0
+debug_shape_custom_color = Color(0, 1, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -170.0
+offset_right = 28.5
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SPEED: "
+script = ExtResource("4_3juge")
