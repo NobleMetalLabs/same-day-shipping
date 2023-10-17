@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cvb0ckl2egu56"]
+
+[ext_resource type="AudioStream" uid="uid://d3mat83yw8dur" path="res://assets/sounds/player/slide/water/end/Pilot_Med_Mvmt_SlideEnd_Water_2ch_v1_01.wav" id="1_6lped"]
+[ext_resource type="AudioStream" uid="uid://c4oe7ru0o24xw" path="res://assets/sounds/player/slide/water/end/Pilot_Med_Mvmt_SlideEnd_Water_2ch_v1_02.wav" id="2_er6op"]
+[ext_resource type="AudioStream" uid="uid://b1supohqaiwtm" path="res://assets/sounds/player/slide/water/end/Pilot_Med_Mvmt_SlideEnd_Water_2ch_v1_03.wav" id="3_180wm"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_6lped")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_er6op")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_180wm")
+stream_2/weight = 1.0

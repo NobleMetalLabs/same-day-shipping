@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cvb0ckl2egu56"]
+
+[ext_resource type="AudioStream" uid="uid://deur2876j55es" path="res://assets/sounds/player/slide/wood/end/Pilot_Med_Mvmt_SlideEnd_Wood_2ch_v1_01.wav" id="1_1ws3s"]
+[ext_resource type="AudioStream" uid="uid://bsmyupi4q88r3" path="res://assets/sounds/player/slide/wood/end/Pilot_Med_Mvmt_SlideEnd_Wood_2ch_v1_02.wav" id="2_7d17o"]
+[ext_resource type="AudioStream" uid="uid://07replvpv7ww" path="res://assets/sounds/player/slide/wood/end/Pilot_Med_Mvmt_SlideEnd_Wood_2ch_v1_03.wav" id="3_ebgwh"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_1ws3s")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_7d17o")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_ebgwh")
+stream_2/weight = 1.0

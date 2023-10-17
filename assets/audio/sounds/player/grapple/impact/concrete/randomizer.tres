@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://ddto8i4d8pdri"]
+
+[ext_resource type="AudioStream" uid="uid://c2qo70ei70rgo" path="res://assets/sounds/player/grapple/impact/concrete/imp_grapple_concrete_2ch_v1_01.wav" id="1_lkbyr"]
+[ext_resource type="AudioStream" uid="uid://cjgtk52f0nfg3" path="res://assets/sounds/player/grapple/impact/concrete/imp_grapple_concrete_2ch_v1_02.wav" id="2_nlmne"]
+[ext_resource type="AudioStream" uid="uid://byvha1qrnqfsl" path="res://assets/sounds/player/grapple/impact/concrete/imp_grapple_concrete_2ch_v1_03.wav" id="3_j6jvn"]
+[ext_resource type="AudioStream" uid="uid://bmycsme0rrw8c" path="res://assets/sounds/player/grapple/impact/concrete/imp_grapple_concrete_2ch_v1_04.wav" id="4_ky220"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_lkbyr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_nlmne")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_j6jvn")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_ky220")
+stream_3/weight = 1.0

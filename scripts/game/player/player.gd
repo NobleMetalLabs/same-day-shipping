@@ -19,6 +19,11 @@ var jump_velocity = -gravity_vec * sqrt(-2.0 * -gravity * jump_height) #vi = sqr
 
 @onready var DEBUG_VECTORS : DEBUG_VECTORS = $"%DEBUG_VECTORS"
 
+signal began_slide()
+signal ended_slide()
+signal started_grapple()
+signal ended_grapple() 
+
 var look_dir : Vector3 :
 	get:
 		return Vector3.FORWARD\

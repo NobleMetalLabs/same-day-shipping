@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://dkamliae6q0rd"]
+
+[ext_resource type="AudioStream" uid="uid://l622oww7uuvx" path="res://assets/sounds/player/grapple/extract/metal/extract_grapple_solidmetal_2ch_v1_01.wav" id="1_406tg"]
+[ext_resource type="AudioStream" uid="uid://bcfxebfwensoi" path="res://assets/sounds/player/grapple/extract/metal/extract_grapple_solidmetal_2ch_v1_02.wav" id="2_kfxtf"]
+[ext_resource type="AudioStream" uid="uid://cfsg44gq0aib4" path="res://assets/sounds/player/grapple/extract/metal/extract_grapple_solidmetal_2ch_v1_03.wav" id="3_wjgs0"]
+[ext_resource type="AudioStream" uid="uid://c8833xtcv6r7c" path="res://assets/sounds/player/grapple/extract/metal/extract_grapple_solidmetal_2ch_v1_04.wav" id="4_h3j4w"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_406tg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_kfxtf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_wjgs0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_h3j4w")
+stream_3/weight = 1.0

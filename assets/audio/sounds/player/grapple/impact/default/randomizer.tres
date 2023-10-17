@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://svxhsjjfnucq"]
+
+[ext_resource type="AudioStream" uid="uid://cjm5fiej1nge4" path="res://assets/sounds/player/grapple/impact/default/imp_grapple_default_2ch_v1_01.wav" id="1_ep348"]
+[ext_resource type="AudioStream" uid="uid://db2tcmcffosnw" path="res://assets/sounds/player/grapple/impact/default/imp_grapple_default_2ch_v1_02.wav" id="2_7cdg2"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_ep348")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_7cdg2")
+stream_1/weight = 1.0

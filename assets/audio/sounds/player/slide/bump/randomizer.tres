@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://dg08o0ysac4tp"]
+
+[ext_resource type="AudioStream" uid="uid://dhr5dt877pqxn" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_01.wav" id="1_8w3cc"]
+[ext_resource type="AudioStream" uid="uid://bw3vcn042i40t" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_02.wav" id="2_v3kbc"]
+[ext_resource type="AudioStream" uid="uid://jimt4a3wj5e3" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_03.wav" id="3_nqi0k"]
+[ext_resource type="AudioStream" uid="uid://b63ck6dyac8j8" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_04.wav" id="4_mlx5n"]
+[ext_resource type="AudioStream" uid="uid://b6ln2buah1yqc" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_05.wav" id="5_a77yb"]
+[ext_resource type="AudioStream" uid="uid://qlcrx3fnr3ks" path="res://assets/audio/sounds/player/slide/bump/Pilot_Med_Mvmt_Slide_Bump_2ch_v1_06.wav" id="6_yn2ky"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_8w3cc")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_v3kbc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_nqi0k")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_mlx5n")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_a77yb")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_yn2ky")
+stream_5/weight = 1.0
