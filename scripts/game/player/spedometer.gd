@@ -8,3 +8,4 @@ func _process(_delta):
 	self.text += "SPEED: %3.3f\n" % [player.velocity.length()]
 	self.text += "HOOKSPEED: %3.3f\n" % [player.HOOK_SPEED]
 	self.text += "FRICTION_COEFF: %3.3f\n" % [player.current_friction_coeff]
+	self.text += "SLIDING: %s\n" % [player.is_sliding]

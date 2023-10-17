@@ -19,11 +19,6 @@ var jump_velocity = -gravity_vec * sqrt(-2.0 * -gravity * jump_height) #vi = sqr
 
 @onready var DEBUG_VECTORS : DEBUG_VECTORS = $"%DEBUG_VECTORS"
 
-signal began_slide()
-signal ended_slide()
-signal started_grapple()
-signal ended_grapple() 
-
 var look_dir : Vector3 :
 	get:
 		return Vector3.FORWARD\
@@ -112,7 +107,7 @@ func _horizontal_velocity():
 
 var STANDING_FRICTION_COEFF = 0.01
 var SLIDING_FRICTION_COEFF = 1.25
-var SLIDING_TIME_TO_LERP_FRICTION = 3
+var SLIDING_TIME_TO_LERP_FRICTION = 2
 var current_friction_coeff : float = STANDING_FRICTION_COEFF
 func _friction():
 	var vel = self.horizontal_velocity
@@ -148,6 +143,11 @@ var MAX_HOOK_SPEED = 3.5 * MAX_SPEED
 var MAX_HOOK_ACCEL = MAX_HOOK_SPEED / 2
 func _hook():
 	if not is_hooked: return
+
+	if Input.is_action_just_pressed("slide"):
+		detach_hook()
+		return
+
 	var target_dir : Vector3 = self.position.direction_to(hook_target)
 	HOOK_SPEED = self.velocity.dot(target_dir)
 	if look_dir.dot(target_dir) < -0.25 \
@@ -177,17 +177,20 @@ func _slide():
 		is_sliding = false
 		end_slide()
 
-
-	self.floor_stop_on_slope = not is_sliding
+#	self.floor_stop_on_slope = not is_sliding
 
 func start_slide():
 	current_movement_coeff = SLIDING_MOVEMENT_COEFF
 	current_friction_coeff = SLIDING_FRICTION_COEFF
 	slide_friction_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	slide_friction_tween.tween_property(self, "current_friction_coeff", STANDING_FRICTION_COEFF, SLIDING_TIME_TO_LERP_FRICTION)
-	detach_hook()
+	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_3d_audio.bind(self, "sounds/player/slide/grass/end"))
+	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/grass/start")
+	AudioDispatcher.end("sounds/player/slide/clothgear/end", 0.25)
 
 func end_slide():
 	current_movement_coeff = STANDING_MOVEMENT_COEFF
 	current_friction_coeff = STANDING_FRICTION_COEFF
 	if slide_friction_tween: slide_friction_tween.kill()
+	AudioDispatcher.end("sounds/player/slide/grass/start", 1)
+	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end")
