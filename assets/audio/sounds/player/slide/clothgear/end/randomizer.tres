@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://d0jpkfuvfovbj"]
+
+[ext_resource type="AudioStream" uid="uid://tmxu8hlmm0vd" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_01.wav" id="1_7hc3i"]
+[ext_resource type="AudioStream" uid="uid://wsji3v0giwbo" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_02.wav" id="2_s0xof"]
+[ext_resource type="AudioStream" uid="uid://cm2v24ys75q2j" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_03.wav" id="3_hy7i2"]
+[ext_resource type="AudioStream" uid="uid://rnoj8kd2vovo" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_04.wav" id="4_rkcnw"]
+[ext_resource type="AudioStream" uid="uid://b2e76djq5wx3m" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_05.wav" id="5_sghc3"]
+[ext_resource type="AudioStream" uid="uid://nnkodmrc288" path="res://assets/audio/sounds/player/slide/clothgear/end/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_06.wav" id="6_p70f7"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_7hc3i")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_s0xof")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_hy7i2")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_rkcnw")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_sghc3")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_p70f7")
+stream_5/weight = 1.0
