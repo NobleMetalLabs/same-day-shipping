@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Same Day Shipping"
-run/main_scene="res://scenes/tests/farmlands_test.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+run/main_scene="res://scenes/tests/playground.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.109804, 0.109804, 0.109804, 1)
 boot_splash/image="res://assets/textures/ui/iconlarge.png"
 config/icon="res://assets/textures/ui/icon.png"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=2
 
 [input]
@@ -52,9 +52,21 @@ jump={
 }
 slide={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+grapple={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Packages"
+3d_physics/layer_4="PackageDestinations"
 
 [rendering]
 
