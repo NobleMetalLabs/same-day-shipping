@@ -15,7 +15,7 @@ var look_dir_delta: Vector2 # Input direction for look/aim
 var jump_velocity = -gravity_vec * sqrt(-2.0 * -gravity * jump_height) #vi = sqrt(vf^2 - 2gΔy)
 @export var jump_time: float = 1 #s
 
-@export var camera: Node3D
+@onready var camera: Node3D = self.find_child("camera")
 
 @onready var DEBUG_VECTORS : DEBUG_VECTORS = $"%DEBUG_VECTORS"
 
@@ -46,9 +46,10 @@ func _physics_process(delta: float) -> void:
 	delta_time = delta
 	if mouse_captured: _rotate_camera()
 
+	_state()
 	_wish_dir()
 	_hook()
-	if not is_hooked: 
+	if not is_hooked:
 		_friction()
 		_gravity()
 	_horizontal_velocity()
@@ -72,6 +73,18 @@ func _rotate_camera(sens_mod: float = 1.0) -> void:
 	camera.rotation.x = clamp(camera.rotation.x - look_dir_delta.y * camera_sens * sens_mod * delta_time, -1.5, 1.5)
 	look_dir_delta = Vector2.ZERO
 
+var _is_on_floor : bool = false
+var _was_on_floor : bool = false
+var _is_just_on_floor : bool = false
+var _is_on_floor_extended : bool = false
+var _is_off_floor_extended : bool = false
+func _state():
+	_was_on_floor = _is_on_floor
+	_is_on_floor = self.is_on_floor()
+	_is_just_on_floor = _is_on_floor and not _was_on_floor
+	_is_on_floor_extended = _is_on_floor and _was_on_floor
+	_is_off_floor_extended = not _is_on_floor and not _was_on_floor
+
 var wish_dir : Vector3
 
 var MAX_SPEED = 7.5
@@ -82,20 +95,24 @@ func _wish_dir():
 	wish_dir = Vector3(wish_dir2.x, 0, wish_dir2.y)
 	wish_dir = self.transform.basis * wish_dir
 	DEBUG_VECTORS.set_dir("wish_dir", wish_dir)
-	
+
+var STANDING_MOVEMENT_COEFF = 1
+var SLIDING_MOVEMENT_COEFF = 0.1
+var current_movement_coeff : float = STANDING_MOVEMENT_COEFF
 func _horizontal_velocity():
 	var vel = self.velocity
 	var current_speed = vel.dot(wish_dir)
-	var add_speed = clampf((MAX_SPEED if is_on_floor() else MAX_AIR_SPEED) - current_speed, 0, MAX_ACCEL * delta_time)
-	self.velocity = vel + (add_speed * wish_dir)
+	var add_speed = clampf((MAX_SPEED if _is_on_floor else MAX_AIR_SPEED) - current_speed, 0, MAX_ACCEL * delta_time) #TODO: LESSEN SPEED GAIN FROM AIR STRAFING
+	self.velocity = vel + (add_speed * wish_dir * current_movement_coeff)
 
-var _was_on_floor : bool = true
+var STANDING_FRICTION_COEFF = 0.01
+var SLIDING_FRICTION_COEFF = 1.25
+var SLIDING_TIME_TO_LERP_FRICTION = 3
+var current_friction_coeff : float = STANDING_FRICTION_COEFF
 func _friction():
 	var vel = self.horizontal_velocity
-	var _is_on_floor = self.is_on_floor()
-	if _is_on_floor and _was_on_floor:
-		vel *= 0.01 ** delta_time
-	_was_on_floor = _is_on_floor
+	if _is_on_floor_extended:
+		vel *= current_friction_coeff ** delta_time #TODO: REWORK FRICTION FOR MORE RESPONSIVE STOPPING FROM HIGH SPEEDS
 	DEBUG_VECTORS.set_dir("friction", self.horizontal_velocity - vel)
 	self.horizontal_velocity = vel
 
@@ -103,17 +120,12 @@ func _gravity():
 	velocity += gravity_vec * gravity * delta_time
 
 func _jump():
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and _is_on_floor:
 		velocity += jump_velocity
-
-func _slide():
-	pass
 
 var is_hooked : bool = false
 var hook_target : Vector3 = Vector3.ZERO
 var hook_accelaration : Vector3 = Vector3.ZERO
-
-var HOOK_SPEED : float = 0
 
 func attach_hook():
 	#if is_hooked: return
@@ -126,6 +138,7 @@ func detach_hook():
 	is_hooked = false
 	self.find_child("grappling_hook_obstruction_raycast").target_position = Vector3.ZERO
 
+var HOOK_SPEED : float = 0
 var MAX_HOOK_SPEED = 3.5 * MAX_SPEED
 var MAX_HOOK_ACCEL = MAX_HOOK_SPEED / 2
 func _hook():
@@ -145,14 +158,31 @@ func _hook():
 	print(self.basis * hook_target)
 	self.find_child("grappling_hook_obstruction_raycast").target_position = self.to_local(hook_target) * 0.9
 
+var is_sliding : bool = false
+var slide_friction_tween : Tween
+func _slide():
+	if _is_on_floor:
+		if Input.is_action_pressed("slide") and not is_sliding:
+			is_sliding = true
+			start_slide()
+		elif not Input.is_action_pressed("slide") and is_sliding:
+			is_sliding = false
+			end_slide()
+	else:
+		is_sliding = false
+		end_slide()
 
-# func _slide():
-# 	if Input.is_action_just_pressed("slide"):
-# 		sliding = true
-# 		print("slide!")
-# 	elif Input.is_action_just_released("slide"):
-# 		sliding = false
-# 		print("no slide!")
 
-# 	self.floor_stop_on_slope = not sliding
-# 	self.floor_snap_length = sliding_snap_length if sliding else walking_snap_length
+	self.floor_stop_on_slope = not is_sliding
+
+func start_slide():
+	current_movement_coeff = SLIDING_MOVEMENT_COEFF
+	current_friction_coeff = SLIDING_FRICTION_COEFF
+	slide_friction_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	slide_friction_tween.tween_property(self, "current_friction_coeff", STANDING_FRICTION_COEFF, SLIDING_TIME_TO_LERP_FRICTION)
+	detach_hook()
+
+func end_slide():
+	current_movement_coeff = STANDING_MOVEMENT_COEFF
+	current_friction_coeff = STANDING_FRICTION_COEFF
+	if slide_friction_tween: slide_friction_tween.kill()
