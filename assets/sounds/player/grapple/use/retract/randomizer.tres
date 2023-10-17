@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://c1o86kt2fx1ak"]
+
+[ext_resource type="AudioStream" uid="uid://c4ixgbanuxe7h" path="res://assets/sounds/player/grapple/use/retract/grapple_retract_2ch_v1_01.wav" id="1_dceof"]
+[ext_resource type="AudioStream" uid="uid://c6gjwij3usauj" path="res://assets/sounds/player/grapple/use/retract/grapple_retract_2ch_v1_02.wav" id="2_vdww0"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_dceof")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_vdww0")
+stream_1/weight = 1.0

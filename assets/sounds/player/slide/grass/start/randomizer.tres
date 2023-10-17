@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cvb0ckl2egu56"]
+
+[ext_resource type="AudioStream" uid="uid://0d2gbre0kbag" path="res://assets/sounds/player/slide/grass/start/Pilot_Med_Mvmt_SlideStart_Grass_2ch_v1_01.wav" id="1_hda77"]
+[ext_resource type="AudioStream" uid="uid://d2m0s47370vsh" path="res://assets/sounds/player/slide/grass/start/Pilot_Med_Mvmt_SlideStart_Grass_2ch_v1_02.wav" id="2_v37lb"]
+[ext_resource type="AudioStream" uid="uid://xabsm6kpv45l" path="res://assets/sounds/player/slide/grass/start/Pilot_Med_Mvmt_SlideStart_Grass_2ch_v1_03.wav" id="3_6i3gc"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_hda77")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_v37lb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_6i3gc")
+stream_2/weight = 1.0

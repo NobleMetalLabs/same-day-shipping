@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://0w7g12ftts0s"]
+
+[ext_resource type="AudioStream" uid="uid://diwisebptctub" path="res://assets/sounds/player/grapple/extract/wood/extract_grapple_wood_2ch_v1_01.wav" id="1_f3pvb"]
+[ext_resource type="AudioStream" uid="uid://b6qcwti5n2rjd" path="res://assets/sounds/player/grapple/extract/wood/extract_grapple_wood_2ch_v1_02.wav" id="2_2poo5"]
+[ext_resource type="AudioStream" uid="uid://cnoxa21rnblyw" path="res://assets/sounds/player/grapple/extract/wood/extract_grapple_wood_2ch_v1_03.wav" id="3_iej15"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_f3pvb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_2poo5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_iej15")
+stream_2/weight = 1.0

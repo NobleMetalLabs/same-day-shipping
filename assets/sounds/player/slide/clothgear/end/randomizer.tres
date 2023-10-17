@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://d0jpkfuvfovbj"]
+
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_01.wav" id="1_4vleu"]
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_02.wav" id="2_rgsgb"]
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_03.wav" id="3_xvkii"]
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_04.wav" id="4_7xq2c"]
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_05.wav" id="5_hog70"]
+[ext_resource type="AudioStream" path="res://assets/sounds/player/slide/clothgear/Pilot_Med_Mvmt_SlideEndClothGear_2ch_v1_06.wav" id="6_2gnbx"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_4vleu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_rgsgb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_xvkii")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_7xq2c")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_hog70")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_2gnbx")
+stream_5/weight = 1.0
