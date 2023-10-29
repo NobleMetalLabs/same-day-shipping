@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpnl8t6tpbjde"]
+
+[ext_resource type="Script" path="res://scripts/game/ui/PackageZoneUIPoint.gd" id="1_7qibt"]
+[ext_resource type="Texture2D" uid="uid://bbg3u2t6c6e3o" path="res://assets/textures/ui/package-ui-icon.svg" id="2_uxlaa"]
+
+[node name="PackageZoneUIPoint" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7qibt")
+
+[node name="tex" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.032, 0.032)
+pivot_offset = Vector2(400, 400)
+texture = ExtResource("2_uxlaa")
