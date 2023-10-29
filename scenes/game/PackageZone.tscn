@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf32gvijxjjy7"]
+
+[ext_resource type="Script" path="res://scripts/game/PackageZone.gd" id="1_6lqkp"]
+[ext_resource type="PackedScene" uid="uid://bpnl8t6tpbjde" path="res://scenes/game/ui/PackageZoneUIPoint.tscn" id="2_2bgi1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0v1a"]
+margin = 0.0
+size = Vector3(3, 2, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wmxf"]
+size = Vector2(3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnymx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="PackageZone" type="Area3D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_6lqkp")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PackageZoneUIPoint" parent="Node3D" instance=ExtResource("2_2bgi1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_m0v1a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0wmxf")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_rnymx")
