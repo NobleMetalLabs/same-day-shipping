@@ -21,6 +21,7 @@ config/icon="res://assets/textures/ui/icon.png"
 
 AudioDispatcher="*res://scripts/audio/AudioDispatcher.gd"
 GameStateManager="*res://scripts/game/GameStateManager.gd"
+PackageZoneManager="*res://scripts/game/PackageZoneManager.gd"
 
 [display]
 

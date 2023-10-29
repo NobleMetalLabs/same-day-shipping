@@ -2,7 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://dn8xx3fip4k03" path="res://resources/environment.tres" id="1_8txc3"]
 [ext_resource type="PackedScene" uid="uid://bplkgi2p1xmyp" path="res://assets/models/world/general/transmission_tower.blend" id="3_7e6u5"]
-[ext_resource type="PackedScene" uid="uid://ri62cf8h14pg" path="res://scenes/game/player.tscn" id="4_0bvl0"]
+[ext_resource type="PackedScene" uid="uid://ri62cf8h14pg" path="res://scenes/game/Player.tscn" id="4_0bvl0"]
 [ext_resource type="Script" path="res://scripts/game/player/testbox.gd" id="4_heao3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_edeh7"]
