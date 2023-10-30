@@ -39,8 +39,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fpucc")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y432k"]
-points = PackedVector3Array(-1.2192, -0.3048, -5.61219, 1.3716, 2.286, 6.23147, 1.3716, -0.440267, 6.23147, 1.3716, 2.286, -6.23147, -1.35467, 2.286, 6.23147, 1.3716, -0.440267, -6.23147, -1.35467, 2.286, -6.23147, -1.2192, -0.3048, 5.61219)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gn5sd"]
+size = Vector3(2.5, 2.5, 12.25)
 
 [node name="ShippingContainer" type="AnimatableBody3D"]
 
@@ -50,5 +50,5 @@ mesh = SubResource("ArrayMesh_n0ebn")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3048, 0)
-shape = SubResource("ConvexPolygonShape3D_y432k")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21159, 0)
+shape = SubResource("BoxShape3D_gn5sd")

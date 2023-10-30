@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpo6atpnfgp36"]
+
+[ext_resource type="PackedScene" uid="uid://dnucop0vfw2xq" path="res://scenes/objects/world/harbor/ShippingContainer.tscn" id="1_eief4"]
+[ext_resource type="PackedScene" uid="uid://bvcogaktwkplo" path="res://assets/models/world/trainyard/train_car.blend" id="2_3k757"]
+
+[node name="Traincar-1StackShipping" type="Node3D"]
+
+[node name="ShippingContainer" parent="." instance=ExtResource("1_eief4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06384, 0)
+
+[node name="train_car" parent="." instance=ExtResource("2_3k757")]

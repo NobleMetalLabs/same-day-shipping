@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyty5ev20vicf"]
+
+[ext_resource type="PackedScene" uid="uid://dnucop0vfw2xq" path="res://scenes/objects/world/harbor/ShippingContainer.tscn" id="1_suho4"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_woixw"]
+size = Vector3(4.79167, 2.1765, 11.9029)
+
+[node name="ShippingContainer-ThreePyramid" type="Node3D"]
+
+[node name="ShippingContainer" parent="." instance=ExtResource("1_suho4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38124, 0, 0)
+
+[node name="ShippingContainer2" parent="." instance=ExtResource("1_suho4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32599, 0, 0)
+
+[node name="ShippingContainer3" parent="." instance=ExtResource("1_suho4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54269, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17587, 0)
+occluder = SubResource("BoxOccluder3D_woixw")

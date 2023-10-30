@@ -127,10 +127,14 @@ var is_hooked : bool = false
 var hook_target : Vector3 = Vector3.ZERO
 var hook_accelaration : Vector3 = Vector3.ZERO
 
+const FLAG_NONGRAPPLEABLE = 1 << 8
+
 func attach_hook():
 	#if is_hooked: return
 	var raycast : RayCast3D = self.find_child("grappling_hook_targeting_raycast")
 	if not raycast.is_colliding(): return
+	var collider = raycast.get_collider()
+	if bool(collider.collision_layer & FLAG_NONGRAPPLEABLE): return
 	hook_target = raycast.get_collision_point()
 	is_hooked = true
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgjgci6pwqpg0"]
+
+[ext_resource type="PackedScene" uid="uid://bh7yo0y5rcjcu" path="res://scenes/objects/world/industrial/SemiTruckTractor.tscn" id="1_u7om5"]
+[ext_resource type="PackedScene" uid="uid://dnucop0vfw2xq" path="res://scenes/objects/world/harbor/ShippingContainer.tscn" id="2_3yyyi"]
+
+[node name="SemiTruck-1StackShipping" type="Node3D"]
+
+[node name="SemiTruckTractor" parent="." instance=ExtResource("1_u7om5")]
+
+[node name="ShippingContainer" parent="." instance=ExtResource("2_3yyyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410785, 0.970148, -8.76804)
