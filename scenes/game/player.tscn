@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ri62cf8h14pg"]
+[gd_scene load_steps=8 format=3 uid="uid://ri62cf8h14pg"]
 
 [ext_resource type="Script" path="res://scripts/game/player/player.gd" id="1_dr1b4"]
 [ext_resource type="Script" path="res://scripts/game/player/playercamera.gd" id="2_6e5hk"]
+[ext_resource type="Script" path="res://scripts/game/player/PlayerCollisionShape.gd" id="2_q7kq3"]
 [ext_resource type="Script" path="res://scripts/game/player/DEBUG_VECTORS.gd" id="3_neyp5"]
 [ext_resource type="Script" path="res://scripts/game/player/spedometer.gd" id="4_3juge"]
 
@@ -11,7 +12,7 @@ height = 1.75
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0sfqo"]
 height = 1.75
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
 floor_snap_length = 1.0
 script = ExtResource("1_dr1b4")
@@ -24,6 +25,7 @@ mesh = SubResource("CapsuleMesh_mo48a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_0sfqo")
+script = ExtResource("2_q7kq3")
 
 [node name="grappling_hook_obstruction_raycast" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 0)

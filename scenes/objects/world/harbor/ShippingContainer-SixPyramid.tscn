@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0thocf5ngfje"]
+
+[ext_resource type="PackedScene" uid="uid://dnucop0vfw2xq" path="res://scenes/objects/world/harbor/ShippingContainer.tscn" id="1_jbouw"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_r6yng"]
+size = Vector3(3.94203, 4.58013, 11.179)
+
+[node name="ShippingContainer-SixPyramid" type="Node3D"]
+
+[node name="ShippingContainer" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83263, 0, 0)
+
+[node name="ShippingContainer2" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125398, 0, 0.278774)
+
+[node name="ShippingContainer3" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91058, 2.47591, -0.249471)
+
+[node name="ShippingContainer4" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45563, 0.0383565, 0)
+
+[node name="ShippingContainer5" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.846, 2.47591, 0)
+
+[node name="ShippingContainer6" parent="." instance=ExtResource("1_jbouw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35229, 4.97012, -0.103995)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60323, 0)
+occluder = SubResource("BoxOccluder3D_r6yng")

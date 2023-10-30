@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Same Day Shipping"
-run/main_scene="res://scenes/tests/farmlands_test.tscn"
+run/main_scene="res://scenes/tests/arena.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.109804, 0.109804, 0.109804, 1)
 boot_splash/image="res://assets/textures/ui/iconlarge.png"
@@ -73,6 +73,7 @@ grapple={
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Packages"
 3d_physics/layer_4="PackageDestinations"
+3d_physics/layer_9="NotGrappleable"
 
 [rendering]
 

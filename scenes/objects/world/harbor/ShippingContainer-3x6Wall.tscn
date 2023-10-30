@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckan458vckop6"]
+
+[ext_resource type="PackedScene" uid="uid://dnucop0vfw2xq" path="res://scenes/objects/world/harbor/ShippingContainer.tscn" id="1_wy5qj"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_577m3"]
+size = Vector3(14.6084, 6.93033, 11.2377)
+
+[node name="ShippingContainer-3x6Wall" type="Node3D"]
+
+[node name="ShippingContainer" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85479, 0, 0)
+
+[node name="ShippingContainer2" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14755, 0, 0.278774)
+
+[node name="ShippingContainer3" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11157, 2.47591, -0.249471)
+
+[node name="ShippingContainer4" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56653, -0.0391762, 0)
+
+[node name="ShippingContainer5" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86815, 2.47591, 0)
+
+[node name="ShippingContainer6" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.546, 2.51872, -0.298033)
+
+[node name="ShippingContainer7" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03218, 0, -0.212626)
+
+[node name="ShippingContainer8" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73942, 0, 0.278774)
+
+[node name="ShippingContainer9" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7754, 2.47591, -0.0395279)
+
+[node name="ShippingContainer10" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32044, 0.0383565, -0.142134)
+
+[node name="ShippingContainer13" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.85479, 5.00114, 0)
+
+[node name="ShippingContainer14" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.14755, 5.00114, 0.278774)
+
+[node name="ShippingContainer15" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.56653, 4.96196, 0)
+
+[node name="ShippingContainer16" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.03218, 5.00114, -0.212626)
+
+[node name="ShippingContainer17" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.73942, 5.00114, 0.278774)
+
+[node name="ShippingContainer18" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.32044, 5.03949, -0.142134)
+
+[node name="ShippingContainer11" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01882, 2.47591, 0)
+
+[node name="ShippingContainer12" parent="." instance=ExtResource("1_wy5qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34097, 2.56753, -0.103995)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78231, 0)
+occluder = SubResource("BoxOccluder3D_577m3")
