@@ -163,8 +163,8 @@ func _hook():
 	var additional_hook_speed = clampf(MAX_HOOK_SPEED - HOOK_SPEED, 0, MAX_HOOK_ACCEL * delta_time)
 	hook_accelaration = target_dir * additional_hook_speed
 	velocity += hook_accelaration
-	print(hook_target)
-	print(self.basis * hook_target)
+	#print(hook_target)
+	#print(self.basis * hook_target)
 	self.find_child("grappling_hook_obstruction_raycast").target_position = self.to_local(hook_target) * 0.9
 
 var is_sliding : bool = false

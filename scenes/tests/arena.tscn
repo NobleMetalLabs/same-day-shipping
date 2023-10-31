@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3ykullr8bjs6"]
+[gd_scene load_steps=31 format=3 uid="uid://b3ykullr8bjs6"]
 
+[ext_resource type="Script" path="res://scripts/game/MAIN.gd" id="1_tclly"]
 [ext_resource type="PackedScene" uid="uid://c1hrewm6ssdu3" path="res://scenes/objects/world/industrial/CoolingTower.tscn" id="1_yo6jh"]
 [ext_resource type="PackedScene" uid="uid://ckan458vckop6" path="res://scenes/objects/world/harbor/ShippingContainer-3x6Wall.tscn" id="2_cfmih"]
 [ext_resource type="PackedScene" uid="uid://ri62cf8h14pg" path="res://scenes/game/player.tscn" id="2_el38y"]
 [ext_resource type="PackedScene" uid="uid://b0thocf5ngfje" path="res://scenes/objects/world/harbor/ShippingContainer-SixPyramid.tscn" id="2_kyex0"]
+[ext_resource type="PackedScene" uid="uid://cf32gvijxjjy7" path="res://scenes/game/PackageZone.tscn" id="2_v53fs"]
 [ext_resource type="PackedScene" uid="uid://dyty5ev20vicf" path="res://scenes/objects/world/harbor/ShippingContainer-ThreePyramid.tscn" id="3_omhcv"]
 [ext_resource type="PackedScene" uid="uid://d1v0213ty4xri" path="res://scenes/objects/world/harbor/ShippingContainer-4x4Wall.tscn" id="5_hvrvk"]
 [ext_resource type="PackedScene" uid="uid://bjmkpwf8t41di" path="res://scenes/objects/world/industrial/LargePropaneTank.tscn" id="7_uyu24"]
@@ -15,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dwdi4w2812bjb" path="res://scenes/objects/world/industrial/PickupTruck.tscn" id="11_pcncm"]
 [ext_resource type="PackedScene" uid="uid://cew4d4rve6rco" path="res://scenes/objects/world/trainyard/Traincar-2StackShipping.tscn" id="12_jo64f"]
 [ext_resource type="PackedScene" uid="uid://cl6kaobwokadg" path="res://scenes/objects/world/farmlands/GrainTower.tscn" id="15_15j8p"]
+[ext_resource type="Script" path="res://scripts/game/StartZone.gd" id="18_ldebt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0363p"]
 sky_top_color = Color(0.478431, 0.619608, 0.8, 1)
@@ -72,7 +75,18 @@ albedo_texture = SubResource("NoiseTexture2D_g4euf")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ri35"]
 points = PackedVector3Array(-150, 0, -150, -150, 0, 150, 150, 0, -150, 150, 0, 150)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0v1a"]
+margin = 0.0
+size = Vector3(3, 2, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wmxf"]
+size = Vector2(3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le7yp"]
+albedo_color = Color(0, 1, 0, 1)
+
 [node name="SCENE" type="Node3D"]
+script = ExtResource("1_tclly")
 
 [node name="BASE" type="Node" parent="."]
 
@@ -87,7 +101,6 @@ sky_mode = 2
 [node name="GROUND" type="StaticBody3D" parent="BASE"]
 
 [node name="mesh" type="MeshInstance3D" parent="BASE/GROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_7aanp")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_4tlvk")
@@ -181,6 +194,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.9568, 0, -7.7846)
 
 [node name="logisticsoffice" type="Node3D" parent="SCENERY/Q1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.882, 0.0812969, -8.90376)
+
+[node name="PackageZone" parent="SCENERY/Q1/logisticsoffice" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -10.808, 0.0336304, 0)
+zone_name = &"Logistics Office"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="SCENERY/Q1/logisticsoffice"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817657, -0.477539, 0.862362)
@@ -285,6 +302,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552299, 0, 8.40703)
 
 [node name="semi loaders platform" type="Node3D" parent="SCENERY/Q1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.6876, 0, -116.505)
+
+[node name="PackageZone" parent="SCENERY/Q1/semi loaders platform" instance=ExtResource("2_v53fs")]
+transform = Transform3D(2, 0, -7.10543e-15, 0, 2, 0, 7.10543e-15, 0, 2, -2.61869, 0.134872, 4.34367)
+zone_name = &"Loading Platform"
 
 [node name="SemiTruck-1StackShipping" parent="SCENERY/Q1/semi loaders platform" instance=ExtResource("9_1dk3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6917, 0, 14.5698)
@@ -915,6 +936,10 @@ use_collision = true
 radius = 20.0
 sides = 25
 
+[node name="PackageZone" parent="SCENERY/Q2/CoolingTower" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-1.62921e-06, 0, -10, 0, 10, 0, 10, 0, -1.62921e-06, 0, 0.0332775, 0)
+zone_name = &"Main Cooling Tower"
+
 [node name="CoolingTower2" parent="SCENERY/Q2" instance=ExtResource("1_yo6jh")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.757284, 0.262162, -40.7574)
 
@@ -929,6 +954,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.8181, 0, -45.8523)
 
 [node name="altar" type="Node3D" parent="SCENERY/Q2/shrine"]
 transform = Transform3D(0.720176, 0, -0.693792, 0, 1, 0, 0.693792, 0, 0.720176, 22.8035, 0.207498, -1.04577)
+
+[node name="PackageZone" parent="SCENERY/Q2/shrine/altar" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, -1.5, -7.62939e-06, 0.791945, -0.270157)
+zone_name = &"Altar"
 
 [node name="LargePropaneTank3" parent="SCENERY/Q2/shrine/altar" instance=ExtResource("7_uyu24")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.312645, 0, -7.0826)
@@ -1143,8 +1172,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7703, 2.2047, 0.862362)
 use_collision = true
 size = Vector3(0.477088, 7.43649, 12.6761)
 
+[node name="PackageZone" parent="SCENERY/Q2/energyoffice" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -10.4873, 0.0667596, 1.18301)
+zone_name = &"Energy Office"
+
 [node name="solar" type="Node3D" parent="SCENERY/Q2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9759, 0, -82.4087)
+
+[node name="PackageZone" parent="SCENERY/Q2/solar" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-1.93185, 0, 0.517638, 0, 2, 0, -0.517638, 0, -1.93185, -1.67416, 0.207142, 5.97784)
+zone_name = &"Solar Field"
 
 [node name="panelfield" type="Node3D" parent="SCENERY/Q2/solar"]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 15.3831, 0, -8.25561)
@@ -9980,10 +10017,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.729233, 4, 0)
 operation = 2
 size = Vector3(55, 7, 28)
 
+[node name="PackageZone" parent="SCENERY/Q3/offices/CSGCombiner3D/CSGBox3D/CSGBox3D4" instance=ExtResource("2_v53fs")]
+transform = Transform3D(1.19209e-07, 0, 2, 0, 2, 0, -2, 0, 1.19209e-07, -23.4249, -3.47251, -1.18088)
+zone_name = &"CEO Office"
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="SCENERY/Q3/offices/CSGCombiner3D/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -4, 0)
 operation = 2
 size = Vector3(33, 7, 29)
+
+[node name="PackageZone" parent="SCENERY/Q3/offices/CSGCombiner3D/CSGBox3D" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 9.50341, -7.41666, 11.8468)
+zone_name = &"Administrative Offices Lobby"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="SCENERY/Q3/offices/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 8, 42)
@@ -10003,6 +10048,10 @@ size = Vector3(28, 7, 28)
 transform = Transform3D(0.903508, 0.428572, 0, -0.428572, 0.903508, 0, 0, 0, 1, -2.55069, -0.232601, 0)
 operation = 2
 size = Vector3(19.1473, 7, 10.0686)
+
+[node name="PackageZone" parent="SCENERY/Q3/offices/CSGCombiner3D/CSGBox3D2" instance=ExtResource("2_v53fs")]
+transform = Transform3D(0.0310658, 0, 1.99976, 0, 2, 0, -1.99976, 0, 0.0310658, 25.1466, -7.44238, 0.102493)
+zone_name = &"Facility Management Office"
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="SCENERY/Q3/offices/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7797, 11.2482, 21.5908)
@@ -10072,6 +10121,10 @@ size = Vector3(5.20502, 1.85556, 6.91981)
 
 [node name="gas" type="Node3D" parent="SCENERY/Q3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.7181, 0, 74.0898)
+
+[node name="PackageZone" parent="SCENERY/Q3/gas" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 5.50341, 0.129095, 2.22999)
+zone_name = &"Gas Station"
 
 [node name="build\'" type="CSGBox3D" parent="SCENERY/Q3/gas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85767, 2.53133, 9.68852)
@@ -10633,6 +10686,10 @@ size = Vector3(0.5, 10, 0.5)
 [node name="pumpstation" type="Node3D" parent="SCENERY/Q4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.769, 9.16301, 17.3405)
 
+[node name="PackageZone" parent="SCENERY/Q4/pumpstation" instance=ExtResource("2_v53fs")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.497, -1.161, 4.234)
+zone_name = &"Pump Station"
+
 [node name="CSGBox3D11" type="CSGBox3D" parent="SCENERY/Q4/pumpstation"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -6.7508, -7.63859, -7.40255)
 use_collision = true
@@ -10753,6 +10810,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.8, 
 [node name="train platform" type="Node3D" parent="SCENERY/Q4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.615, 0, 97.2999)
 
+[node name="PackageZone" parent="SCENERY/Q4/train platform" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 24.9733, 1.20924, 3.06567)
+zone_name = &"Train Platform"
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="SCENERY/Q4/train platform"]
 use_collision = true
 
@@ -10771,6 +10832,10 @@ size = Vector3(13.13, 4.17305, 15.7652)
 
 [node name="building" type="Node3D" parent="SCENERY/Q4/train platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4497, 0, -3.70697)
+
+[node name="PackageZone" parent="SCENERY/Q4/train platform/building" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.7418, 1.20924, 3.54449)
+zone_name = &"Train Ticketing Office"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="SCENERY/Q4/train platform/building"]
 use_collision = true
@@ -11426,6 +11491,10 @@ transform = Transform3D(0.999651, 0, 0.0264038, 0, 1, 0, -0.0264038, 0, 0.999651
 [node name="SemiTruck-2StackShipping" parent="SCENERY/Q4/parking lot" instance=ExtResource("8_5gmrb")]
 transform = Transform3D(0.999181, 0, 0.0404631, 0, 1, 0, -0.0404631, 0, 0.999181, 30.7175, -1.90735e-06, 16.6758)
 
+[node name="PackageZone" parent="SCENERY/Q4/parking lot" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 31.6435, 0.113951, -16.2089)
+zone_name = &"Train Station Parking Lot"
+
 [node name="road" type="Node3D" parent="SCENERY/Q4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.613, 0, 43.35)
 
@@ -11559,8 +11628,27 @@ transform = Transform3D(0.990833, 0, 0.135093, 0, 1, 0, -0.135093, 0, 0.990833, 
 [node name="pickup_truck10" parent="SCENERY/Q4/road/truckgroup3" instance=ExtResource("11_pcncm")]
 transform = Transform3D(0.997023, 0, 0.0771019, 0, 1, 0, -0.0771019, 0, 0.997023, -9.7283, 0, 1.12397)
 
+[node name="PackageZone" parent="SCENERY/Q4/road" instance=ExtResource("2_v53fs")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6911, 0.145459, -12.2871)
+zone_name = &"Pump Station Parking Lot"
+
 [node name="GAME" type="Node" parent="."]
 
 [node name="Player" parent="GAME" instance=ExtResource("2_el38y")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -59.9028, 0, -36.35)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -54.9508, 0.287041, -35.4468)
 floor_max_angle = 0.959931
+
+[node name="StartZone" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -54.8142, 0.0354595, -34.7179)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("18_ldebt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_m0v1a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StartZone"]
+mesh = SubResource("PlaneMesh_0wmxf")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_le7yp")
