@@ -9,6 +9,7 @@ func reset():
 func register_package_zone(zone : PackageZone):
 	#print("Added ['%s'] to zones" % [zone.zone_name])
 	zones.append(zone)
+	zone.set_enabled(false)
 
 func generate_zone_list(num : int = 5) -> Array[PackageZone]:
 	var zcopy = zones.duplicate()

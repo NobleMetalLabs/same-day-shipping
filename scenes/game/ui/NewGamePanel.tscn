@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://1foa2euwwg63"]
+
+[ext_resource type="Script" path="res://scripts/game/ui/NewGamePanel.gd" id="1_2j5o4"]
+
+[node name="NewGamePanel" type="Panel"]
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2j5o4")
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TitleStack" type="VBoxContainer" parent="Margins"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Margins/TitleStack"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsStack" type="VBoxContainer" parent="Margins/TitleStack"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DestinationCount" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Margins/TitleStack/OptionsStack/DestinationCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Destination Count"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DEST_COUNT_SPINBOX" type="SpinBox" parent="Margins/TitleStack/OptionsStack/DestinationCount"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+
+[node name="Seed" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Margins/TitleStack/OptionsStack/Seed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Seed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SEED_LINEEDIT" type="LineEdit" parent="Margins/TitleStack/OptionsStack/Seed"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Start" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="START_BUTTON" type="Button" parent="Margins/TitleStack/OptionsStack/Start"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "START"

@@ -12,6 +12,10 @@ func reset():
 func start():
 	running = true
 
+func restart():
+	reset()
+	running = true
+
 func stop():
 	running = false
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3ykullr8bjs6"]
+[gd_scene load_steps=26 format=3 uid="uid://b3ykullr8bjs6"]
 
 [ext_resource type="Script" path="res://scripts/game/MAIN.gd" id="1_tclly"]
 [ext_resource type="PackedScene" uid="uid://c1hrewm6ssdu3" path="res://scenes/objects/world/industrial/CoolingTower.tscn" id="1_yo6jh"]
 [ext_resource type="PackedScene" uid="uid://ckan458vckop6" path="res://scenes/objects/world/harbor/ShippingContainer-3x6Wall.tscn" id="2_cfmih"]
-[ext_resource type="PackedScene" uid="uid://ri62cf8h14pg" path="res://scenes/game/player.tscn" id="2_el38y"]
 [ext_resource type="PackedScene" uid="uid://b0thocf5ngfje" path="res://scenes/objects/world/harbor/ShippingContainer-SixPyramid.tscn" id="2_kyex0"]
 [ext_resource type="PackedScene" uid="uid://cf32gvijxjjy7" path="res://scenes/game/PackageZone.tscn" id="2_v53fs"]
 [ext_resource type="PackedScene" uid="uid://dyty5ev20vicf" path="res://scenes/objects/world/harbor/ShippingContainer-ThreePyramid.tscn" id="3_omhcv"]
@@ -17,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dwdi4w2812bjb" path="res://scenes/objects/world/industrial/PickupTruck.tscn" id="11_pcncm"]
 [ext_resource type="PackedScene" uid="uid://cew4d4rve6rco" path="res://scenes/objects/world/trainyard/Traincar-2StackShipping.tscn" id="12_jo64f"]
 [ext_resource type="PackedScene" uid="uid://cl6kaobwokadg" path="res://scenes/objects/world/farmlands/GrainTower.tscn" id="15_15j8p"]
-[ext_resource type="Script" path="res://scripts/game/StartZone.gd" id="18_ldebt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0363p"]
 sky_top_color = Color(0.478431, 0.619608, 0.8, 1)
@@ -74,16 +72,6 @@ albedo_texture = SubResource("NoiseTexture2D_g4euf")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ri35"]
 points = PackedVector3Array(-150, 0, -150, -150, 0, 150, 150, 0, -150, 150, 0, 150)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m0v1a"]
-margin = 0.0
-size = Vector3(3, 2, 2)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0wmxf"]
-size = Vector2(3, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le7yp"]
-albedo_color = Color(0, 1, 0, 1)
 
 [node name="SCENE" type="Node3D"]
 script = ExtResource("1_tclly")
@@ -11631,24 +11619,3 @@ transform = Transform3D(0.997023, 0, 0.0771019, 0, 1, 0, -0.0771019, 0, 0.997023
 [node name="PackageZone" parent="SCENERY/Q4/road" instance=ExtResource("2_v53fs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6911, 0.145459, -12.2871)
 zone_name = &"Pump Station Parking Lot"
-
-[node name="GAME" type="Node" parent="."]
-
-[node name="Player" parent="GAME" instance=ExtResource("2_el38y")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -54.9508, 0.287041, -35.4468)
-floor_max_angle = 0.959931
-
-[node name="StartZone" type="Area3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -54.8142, 0.0354595, -34.7179)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("18_ldebt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StartZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_m0v1a")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StartZone"]
-mesh = SubResource("PlaneMesh_0wmxf")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_le7yp")

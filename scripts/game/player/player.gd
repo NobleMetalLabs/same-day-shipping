@@ -32,7 +32,21 @@ var horizontal_velocity : Vector2 :
 		self.velocity = Vector3(value.x, self.velocity.y, value.y)
 
 func _ready() -> void:
-	capture_mouse()
+	GameStateManager.pregame_started.connect(
+		func():
+			capture_mouse()
+	)
+	GameStateManager.game_started.connect(
+		func():
+			cant_move = false
+	)
+	GameStateManager.game_ended.connect(
+		func():
+			release_mouse()
+			cant_move = true
+	)
+
+var cant_move : bool = true
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir_delta = event.relative * 0.01
@@ -45,9 +59,10 @@ var delta_time : float
 func _physics_process(delta: float) -> void:
 	delta_time = delta
 	if mouse_captured: _rotate_camera()
+	
 
 	_state()
-	_wish_dir()
+	if not cant_move: _wish_dir()
 	_hook()
 	if not is_hooked:
 		_friction()

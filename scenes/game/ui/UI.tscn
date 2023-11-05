@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://conhwwg6txvy"]
+
+[ext_resource type="PackedScene" uid="uid://1foa2euwwg63" path="res://scenes/game/ui/NewGamePanel.tscn" id="1_0u5ot"]
+[ext_resource type="Script" path="res://scripts/game/ui/UI.gd" id="1_2wjvs"]
+[ext_resource type="PackedScene" uid="uid://1yjtudp4xvsi" path="res://scenes/game/ui/CountdownPanel.tscn" id="2_2cmfg"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wjvs")
+
+[node name="NEW_GAME_PANEL" parent="." instance=ExtResource("1_0u5ot")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+
+[node name="COUNTDOWN_PANEL" parent="." instance=ExtResource("2_2cmfg")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = -354.0
+offset_bottom = -254.0
