@@ -32,29 +32,58 @@ var horizontal_velocity : Vector2 :
 		self.velocity = Vector3(value.x, self.velocity.y, value.y)
 
 func _ready() -> void:
-	capture_mouse()
+	GameStateManager.explore.connect(
+		func():
+			cant_move = false
+			capture_mouse()
+	)
+	GameStateManager.pregame_started.connect(
+		func():
+			capture_mouse()
+	)
+	GameStateManager.game_started.connect(
+		func():
+			cant_move = false
+	)
+	GameStateManager.game_ended.connect(
+		func():
+			print("FUCK")
+			release_mouse()
+			cant_move = true
+	)
+
+var cant_move : bool = true
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir_delta = event.relative * 0.01
 	if Input.is_action_just_pressed("grapple"):
 		attach_hook()
-	#if Input.is_action_just_pressed("exit"): get_tree().quit()
+	
+	if not GameStateManager.exploring: return
+	var just_pressed = event.is_pressed() and not event.is_echo()
+	if Input.is_key_pressed(KEY_Z) and just_pressed:
+		save_practice_position()
+		return
+	if Input.is_key_pressed(KEY_X) and just_pressed:
+		goto_practice_position()
+		return
 
 var delta_time : float
 
 func _physics_process(delta: float) -> void:
 	delta_time = delta
 	if mouse_captured: _rotate_camera()
+	
 
 	_state()
-	_wish_dir()
-	_hook()
+	if not cant_move: _wish_dir()
+	if not cant_move: _hook()
 	if not is_hooked:
 		_friction()
 		_gravity()
 	_horizontal_velocity()
-	_jump()
-	_slide()
+	if not cant_move: _jump()
+	if not cant_move: _slide()
 
 	move_and_slide()
 
@@ -198,3 +227,15 @@ func end_slide():
 	if slide_friction_tween: slide_friction_tween.kill()
 	AudioDispatcher.end("sounds/player/slide/grass/start", 1)
 	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end")
+
+var practice_position : Transform3D
+var practice_velocity : Vector3
+
+func save_practice_position():
+	practice_position = self.transform
+	practice_velocity = self.velocity
+
+func goto_practice_position():
+	if not practice_position: return
+	self.transform = practice_position
+	self.velocity = practice_velocity
