@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1foa2euwwg63"]
+[gd_scene load_steps=4 format=3 uid="uid://1foa2euwwg63"]
 
 [ext_resource type="Script" path="res://scripts/game/ui/NewGamePanel.gd" id="1_2j5o4"]
+[ext_resource type="Script" path="res://scripts/game/ui/FocusAwareSpinbox.gd" id="2_dap12"]
+[ext_resource type="Script" path="res://scripts/game/ui/FocusAwareControl.gd" id="3_hv201"]
 
 [node name="NewGamePanel" type="Panel"]
 custom_minimum_size = Vector2(300, 200)
@@ -60,6 +62,7 @@ layout_mode = 2
 min_value = 1.0
 max_value = 10.0
 value = 5.0
+script = ExtResource("2_dap12")
 
 [node name="Seed" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]
 layout_mode = 2
@@ -77,6 +80,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_hv201")
 
 [node name="Start" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]
 layout_mode = 2

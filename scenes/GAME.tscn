@@ -10741,13 +10741,13 @@ size = Vector3(0.477088, 7.43649, 12.6761)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.6856, 0, 5.99685)
 
 [node name="LargePropaneTank" parent="SCENERY/Q4/propane family" instance=ExtResource("2_dgkyw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.31263, 0, -1.0826)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.31263, 0, -1.0826)
 
 [node name="LargePropaneTank2" parent="SCENERY/Q4/propane family" instance=ExtResource("2_dgkyw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.31263, 0, -1.0826)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.71198, 0, -1.0826)
 
 [node name="LargePropaneTank3" parent="SCENERY/Q4/propane family" instance=ExtResource("2_dgkyw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.68737, 0, -1.0826)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.84322, 0, -1.0826)
 
 [node name="LargePropaneTank4" parent="SCENERY/Q4/propane family" instance=ExtResource("2_dgkyw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.68737, 0, 2.9174)

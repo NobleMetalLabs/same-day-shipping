@@ -8,7 +8,7 @@
 [node name="SemiTruckTractor" parent="." instance=ExtResource("2_7menb")]
 
 [node name="ShippingContainer" parent="." instance=ExtResource("1_xn68x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410785, 0.970148, -8.76804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410785, 1.41997, -8.76804)
 
 [node name="ShippingContainer2" parent="." instance=ExtResource("1_xn68x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0738124, 3.48779, -8.76804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0738124, 3.93761, -8.76804)

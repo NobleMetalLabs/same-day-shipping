@@ -5,7 +5,9 @@ var game_seed : int = 0
 var game_zone_count : int = 5
 var current_game_zones : Array[PackageZone]
 var game_in_progress : bool = false
+var exploring : bool = false
 
+signal explore()
 signal pregame_started()
 signal game_started()
 signal postgame_started()
@@ -22,25 +24,46 @@ func _ready():
 	UI.countdown_panel.countdown_finished.connect(end_pregame)
 	
 func _input(event):
+	if get_viewport().gui_get_focus_owner() != null: return
 	var just_pressed = event.is_pressed() and not event.is_echo()
 	if Input.is_key_pressed(KEY_R) and just_pressed:
 		restart_game()
+		return
+	if Input.is_key_pressed(KEY_E) and just_pressed:
+		if game_in_progress:
+			start_postgame()
+		explore.emit()
+		exploring = true
+		UI.practice_controls.show()
+		GameStopwatch.reset()
+		UI.new_game_panel.hide()
+		return
+	if Input.is_key_pressed(KEY_N) and just_pressed:
+		if game_in_progress:
+			start_postgame()
+		end_game()
+		UI.new_game_panel.show()
+		return
 
-func start_game(zone_count = 5, _seed = null):
+func start_game(zone_count = 5, _seed = null, rehash = true):
+	print("Starting %s zone game with seed %s." % [zone_count, _seed])
 	if not _seed:
 		randomize()
 		_seed = randi()
-	game_seed = hash(_seed)
+	game_seed = hash(_seed) if rehash else _seed
 	game_zone_count = zone_count
 	current_game_zones = PackageZoneManager.generate_zone_list(zone_count)
 	PackageZoneManager.set_active_zones(current_game_zones)
 	UI.countdown_panel.start_countdown()
 	GameStopwatch.reset()
 	game_in_progress = true
+	exploring = false
+	UI.practice_controls.hide()
 	pregame_started.emit()
 
 func restart_game():
-	start_game(game_zone_count, game_seed)
+	if not game_in_progress: return
+	start_game(game_zone_count, game_seed, false)
 
 func end_pregame():
 	GameStopwatch.start()
@@ -55,6 +78,7 @@ func register_package_zone_completion(zone : PackageZone):
 
 func start_postgame():
 	GameStopwatch.stop()
+	PackageZoneManager.set_active_zones([])
 	print("You win! Your time was: %s" % [GameStopwatch.time])
 	postgame_started.emit()
 
