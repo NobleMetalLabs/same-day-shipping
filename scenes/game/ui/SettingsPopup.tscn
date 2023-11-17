@@ -1,0 +1,166 @@
+[gd_scene load_steps=2 format=3 uid="uid://drjauw7tj56rl"]
+
+[ext_resource type="Script" path="res://scripts/game/ui/SettingsPanel.gd" id="1_ujtvj"]
+
+[node name="SettingsPopup" type="PopupPanel"]
+process_mode = 3
+initial_position = 4
+size = Vector2i(700, 400)
+visible = true
+script = ExtResource("1_ujtvj")
+
+[node name="GuidesPanel" type="Panel" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 696.0
+offset_bottom = 396.0
+
+[node name="MarginContainer" type="MarginContainer" parent="GuidesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="GuidesPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Video" type="Panel" parent="GuidesPanel/MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="Audio" type="Panel" parent="GuidesPanel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GuidesPanel/MarginContainer/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 125
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Master"
+horizontal_alignment = 2
+
+[node name="MASTER-VOL-SLIDER" type="HSlider" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -72.0
+max_value = 0.0
+step = 0.01
+value = -6.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 2
+
+[node name="MUSIC-VOL-SLIDER" type="HSlider" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -72.0
+max_value = 0.0
+step = 0.01
+value = -6.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+horizontal_alignment = 2
+
+[node name="SFX-VOL-SLIDER" type="HSlider" parent="GuidesPanel/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -72.0
+max_value = 0.0
+step = 0.01
+value = -6.0
+
+[node name="Controls" type="Panel" parent="GuidesPanel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GuidesPanel/MarginContainer/TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 125
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GuidesPanel/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="GuidesPanel/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Mouse Sensitivity"
+horizontal_alignment = 2
+
+[node name="MOUSE-SENS-SLIDER" type="HSlider" parent="GuidesPanel/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 1.5
+max_value = 9.25
+step = 0.01
+value = 3.0

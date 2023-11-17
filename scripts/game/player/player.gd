@@ -50,6 +50,10 @@ func _ready() -> void:
 			cant_move = true
 	)
 	UI.capture_mouse()
+	UI.settings_popup.mouse_sens_slider.value_changed.connect(
+		func(value):
+			camera_sens = value
+	)
 
 var cant_move : bool = true
 
@@ -182,8 +186,6 @@ func _hook():
 	var additional_hook_speed = clampf(MAX_HOOK_SPEED - HOOK_SPEED, 0, MAX_HOOK_ACCEL * delta_time)
 	hook_accelaration = target_dir * additional_hook_speed
 	velocity += hook_accelaration
-	#print(hook_target)
-	#print(self.basis * hook_target)
 	self.find_child("grappling_hook_obstruction_raycast").target_position = self.to_local(hook_target) * 0.9
 
 var is_sliding : bool = false
@@ -207,8 +209,8 @@ func start_slide():
 	current_friction_coeff = SLIDING_FRICTION_COEFF
 	slide_friction_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	slide_friction_tween.tween_property(self, "current_friction_coeff", STANDING_FRICTION_COEFF, SLIDING_TIME_TO_LERP_FRICTION)
-	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_3d_audio.bind(self, "sounds/player/slide/grass/end"))
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/grass/start")
+	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_3d_audio.bind(self, "sounds/player/slide/grass/end", "SFX"))
+	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/grass/start", "SFX")
 	AudioDispatcher.end("sounds/player/slide/clothgear/end", 0.25)
 
 func end_slide():
@@ -216,7 +218,7 @@ func end_slide():
 	current_friction_coeff = STANDING_FRICTION_COEFF
 	if slide_friction_tween: slide_friction_tween.kill()
 	AudioDispatcher.end("sounds/player/slide/grass/start", 1)
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end")
+	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end", "SFX")
 
 var practice_position : Transform3D
 var practice_velocity : Vector3

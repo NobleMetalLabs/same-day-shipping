@@ -5,6 +5,7 @@ extends Control
 @onready var countdown_panel : CountdownPanel = $"%COUNTDOWN_PANEL"
 @onready var practice_controls : Label = $"%PRACTICE_CONTROLS"
 @onready var guides_popup : PopupPanel = $"%GUIDES_PANEL"
+@onready var settings_popup : PopupPanel = $"%SETTINGS_POPUP"
 
 @onready var cross_hair = $"%CROSSHAIR"
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://conhwwg6txvy"]
+[gd_scene load_steps=7 format=3 uid="uid://conhwwg6txvy"]
 
 [ext_resource type="PackedScene" uid="uid://1foa2euwwg63" path="res://scenes/game/ui/NewGamePanel.tscn" id="1_0u5ot"]
 [ext_resource type="Script" path="res://scripts/game/ui/UI.gd" id="1_2wjvs"]
 [ext_resource type="PackedScene" uid="uid://1yjtudp4xvsi" path="res://scenes/game/ui/CountdownPanel.tscn" id="2_2cmfg"]
 [ext_resource type="PackedScene" uid="uid://bc8i1t5ittoa7" path="res://scenes/game/ui/EscapeMenu.tscn" id="2_mbxgr"]
 [ext_resource type="PackedScene" uid="uid://go6i81amt0le" path="res://scenes/game/ui/GuidesPanel.tscn" id="4_0u61v"]
+[ext_resource type="PackedScene" uid="uid://drjauw7tj56rl" path="res://scenes/game/ui/SettingsPopup.tscn" id="5_jnnvo"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -30,6 +31,10 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_top = -354.0
 offset_bottom = -254.0
+
+[node name="SETTINGS_POPUP" parent="." instance=ExtResource("5_jnnvo")]
+unique_name_in_owner = true
+visible = false
 
 [node name="GUIDES_PANEL" parent="." instance=ExtResource("4_0u61v")]
 unique_name_in_owner = true

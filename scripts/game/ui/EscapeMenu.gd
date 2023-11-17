@@ -24,7 +24,7 @@ func _ready():
 	)
 	options_button.pressed.connect(
 		func():
-			UI.options_popup.popup()
+			UI.settings_popup.popup()
 	)
 	mainmenu_button.pressed.connect(
 		func():
