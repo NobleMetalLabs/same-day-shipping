@@ -1,5 +1,5 @@
 class_name NewGamePanel
-extends Panel
+extends PopupPanel
 
 signal new_game_requested(game_options : Dictionary)
 

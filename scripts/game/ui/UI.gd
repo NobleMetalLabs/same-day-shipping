@@ -5,3 +5,17 @@ extends Control
 @onready var countdown_panel : CountdownPanel = $"%COUNTDOWN_PANEL"
 @onready var practice_controls : Label = $"%PRACTICE_CONTROLS"
 @onready var guides_popup : PopupPanel = $"%GUIDES_PANEL"
+
+@onready var cross_hair = $"%CROSSHAIR"
+
+var mouse_captured : bool = false
+
+func capture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	cross_hair.visible = true
+	mouse_captured = true
+
+func release_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	cross_hair.visible = false
+	mouse_captured = false

@@ -1,5 +1,5 @@
-class_name GuidesPanel
-extends Panel
+class_name GuidesPopup
+extends PopupPanel
 
 @export var guides : Array[Guide] = []
 

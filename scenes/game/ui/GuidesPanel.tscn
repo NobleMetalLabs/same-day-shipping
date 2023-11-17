@@ -1,23 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://go6i81amt0le"]
 
 [ext_resource type="Script" path="res://scripts/game/ui/GuidesPanel.gd" id="1_o0eap"]
-[ext_resource type="Resource" uid="uid://b128wxt4ldeye" path="res://resources/guides/MovementGuide.tres" id="2_uc211"]
-[ext_resource type="Resource" uid="uid://dqxcokjp8f2ap" path="res://resources/guides/AirStrafingGuide.tres" id="3_rl06g"]
-[ext_resource type="Resource" uid="uid://cjfrbt2p7uvdm" path="res://resources/guides/SlidingGuide.tres" id="4_aevhu"]
-[ext_resource type="Resource" uid="uid://dqbh5bxvjxld7" path="res://resources/guides/GrappleGuide.tres" id="5_pejt0"]
+[ext_resource type="Resource" uid="uid://b128wxt4ldeye" path="res://resources/guides/MovementGuide.tres" id="2_klkox"]
+[ext_resource type="Resource" uid="uid://dqxcokjp8f2ap" path="res://resources/guides/AirStrafingGuide.tres" id="3_17bgs"]
+[ext_resource type="Resource" uid="uid://cjfrbt2p7uvdm" path="res://resources/guides/SlidingGuide.tres" id="4_cq1su"]
+[ext_resource type="Resource" uid="uid://dqbh5bxvjxld7" path="res://resources/guides/GrappleGuide.tres" id="5_7cnyw"]
 
 [node name="GuidesPopup" type="PopupPanel"]
+process_mode = 3
 initial_position = 4
 size = Vector2i(1000, 700)
 visible = true
+script = ExtResource("1_o0eap")
+guides = Array[Resource("res://scripts/resources/Guide.gd")]([ExtResource("2_klkox"), ExtResource("3_17bgs"), ExtResource("4_cq1su"), ExtResource("5_7cnyw")])
 
 [node name="GuidesPanel" type="Panel" parent="."]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 996.0
 offset_bottom = 696.0
-script = ExtResource("1_o0eap")
-guides = Array[Resource("res://scripts/resources/Guide.gd")]([ExtResource("2_uc211"), ExtResource("3_rl06g"), ExtResource("4_aevhu"), ExtResource("5_pejt0")])
 
 [node name="MarginContainer" type="MarginContainer" parent="GuidesPanel"]
 layout_mode = 1

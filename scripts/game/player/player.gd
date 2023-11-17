@@ -8,7 +8,6 @@ var gravity_vec: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravi
 
 @export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 3
 
-var mouse_captured: bool = false
 var look_dir_delta: Vector2 # Input direction for look/aim
 
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
@@ -35,11 +34,11 @@ func _ready() -> void:
 	GameStateManager.explore.connect(
 		func():
 			cant_move = false
-			capture_mouse()
+			UI.capture_mouse()
 	)
 	GameStateManager.pregame_started.connect(
 		func():
-			capture_mouse()
+			UI.capture_mouse()
 	)
 	GameStateManager.game_started.connect(
 		func():
@@ -47,10 +46,10 @@ func _ready() -> void:
 	)
 	GameStateManager.game_ended.connect(
 		func():
-			print("FUCK")
-			release_mouse()
+			UI.release_mouse()
 			cant_move = true
 	)
+	UI.capture_mouse()
 
 var cant_move : bool = true
 
@@ -72,9 +71,8 @@ var delta_time : float
 
 func _physics_process(delta: float) -> void:
 	delta_time = delta
-	if mouse_captured: _rotate_camera()
+	if UI.mouse_captured: _rotate_camera()
 	
-
 	_state()
 	if not cant_move: _wish_dir()
 	if not cant_move: _hook()
@@ -88,14 +86,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	DEBUG_VECTORS.set_dir("velocity", self.velocity)
-
-func capture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	mouse_captured = true
-
-func release_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	mouse_captured = false
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	self.rotation.y -= look_dir_delta.x * camera_sens * sens_mod * delta_time

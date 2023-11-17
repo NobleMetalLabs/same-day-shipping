@@ -73,9 +73,14 @@ albedo_texture = SubResource("NoiseTexture2D_g4euf")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ri35"]
 points = PackedVector3Array(-150, 0, -150, -150, 0, 150, 150, 0, -150, 150, 0, 150)
 
-[node name="GAME" type="Node3D"]
+[node name="GAME" type="Node"]
 
 [node name="BASE" type="Node" parent="."]
+
+[node name="Player" parent="BASE" instance=ExtResource("18_ynmq1")]
+process_mode = 1
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -54.9508, 0.287041, -35.4468)
+floor_max_angle = 0.959931
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="BASE"]
 environment = SubResource("Environment_tqhjv")
@@ -11618,10 +11623,3 @@ transform = Transform3D(0.997023, 0, 0.0771019, 0, 1, 0, -0.0771019, 0, 0.997023
 [node name="PackageZone" parent="SCENERY/Q4/road" instance=ExtResource("3_rdrp0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6911, 0.145459, -12.2871)
 zone_name = &"Pump Station Parking Lot"
-
-[node name="GAME" type="Node" parent="."]
-
-[node name="Player" parent="GAME" instance=ExtResource("18_ynmq1")]
-process_mode = 1
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -54.9508, 0.287041, -35.4468)
-floor_max_angle = 0.959931
