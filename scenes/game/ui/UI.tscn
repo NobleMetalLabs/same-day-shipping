@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://conhwwg6txvy"]
+[gd_scene load_steps=5 format=3 uid="uid://conhwwg6txvy"]
 
 [ext_resource type="PackedScene" uid="uid://1foa2euwwg63" path="res://scenes/game/ui/NewGamePanel.tscn" id="1_0u5ot"]
 [ext_resource type="Script" path="res://scripts/game/ui/UI.gd" id="1_2wjvs"]
 [ext_resource type="PackedScene" uid="uid://1yjtudp4xvsi" path="res://scenes/game/ui/CountdownPanel.tscn" id="2_2cmfg"]
+[ext_resource type="PackedScene" uid="uid://go6i81amt0le" path="res://scenes/game/ui/GuidesPanel.tscn" id="4_0u61v"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -26,6 +27,9 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_top = -354.0
 offset_bottom = -254.0
+
+[node name="GUIDES_PANEL" parent="." instance=ExtResource("4_0u61v")]
+unique_name_in_owner = true
 
 [node name="Control" type="MarginContainer" parent="."]
 layout_mode = 1

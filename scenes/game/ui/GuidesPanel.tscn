@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://go6i81amt0le"]
+
+[ext_resource type="Script" path="res://scripts/game/ui/GuidesPanel.gd" id="1_o0eap"]
+[ext_resource type="Resource" uid="uid://b128wxt4ldeye" path="res://resources/guides/MovementGuide.tres" id="2_uc211"]
+[ext_resource type="Resource" uid="uid://dqxcokjp8f2ap" path="res://resources/guides/AirStrafingGuide.tres" id="3_rl06g"]
+[ext_resource type="Resource" uid="uid://cjfrbt2p7uvdm" path="res://resources/guides/SlidingGuide.tres" id="4_aevhu"]
+[ext_resource type="Resource" uid="uid://dqbh5bxvjxld7" path="res://resources/guides/GrappleGuide.tres" id="5_pejt0"]
+
+[node name="GuidesPopup" type="PopupPanel"]
+initial_position = 4
+size = Vector2i(1000, 700)
+visible = true
+
+[node name="GuidesPanel" type="Panel" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 996.0
+offset_bottom = 696.0
+script = ExtResource("1_o0eap")
+guides = Array[Resource("res://scripts/resources/Guide.gd")]([ExtResource("2_uc211"), ExtResource("3_rl06g"), ExtResource("4_aevhu"), ExtResource("5_pejt0")])
+
+[node name="MarginContainer" type="MarginContainer" parent="GuidesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="GuidesPanel/MarginContainer"]
+layout_mode = 2
+split_offset = 155
+
+[node name="Sidebar" type="Panel" parent="GuidesPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="GuidesPanel/MarginContainer/HSplitContainer/Sidebar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuidesPanel/MarginContainer/HSplitContainer/Sidebar/Margins"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="SIDEBAR-BUTTON" type="Button" parent="GuidesPanel/MarginContainer/HSplitContainer/Sidebar/Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sliding"
+
+[node name="Content" type="Control" parent="GuidesPanel/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuidesPanel/MarginContainer/HSplitContainer/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CONTENT-TITLE" type="Label" parent="GuidesPanel/MarginContainer/HSplitContainer/Content/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Guides"
+
+[node name="BG" type="Panel" parent="GuidesPanel/MarginContainer/HSplitContainer/Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GuidesPanel/MarginContainer/HSplitContainer/Content/VBoxContainer/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CONTENT-TEXT" type="Label" parent="GuidesPanel/MarginContainer/HSplitContainer/Content/VBoxContainer/BG/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Welcome to the guides menu. 
+
+This menu contains a series of guides about certain game mechanics.
+
+At the moment it's rather barebones, sorry."
+autowrap_mode = 3

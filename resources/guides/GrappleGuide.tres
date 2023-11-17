@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Guide" load_steps=2 format=3 uid="uid://dqbh5bxvjxld7"]
+
+[ext_resource type="Script" path="res://scripts/resources/Guide.gd" id="1_0oec0"]
+
+[resource]
+script = ExtResource("1_0oec0")
+title = &"Grappling"
+text = "The grappling hook can be canceled by crouching."
