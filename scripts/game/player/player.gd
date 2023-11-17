@@ -71,6 +71,10 @@ func _input(event: InputEvent) -> void:
 		goto_practice_position()
 		return
 
+func _process(_delta):
+	if raycast.is_colliding(): UI.cross_hair.border_color = Color.RED
+	else: UI.cross_hair.border_color = Color.BLACK
+
 var delta_time : float
 
 func _physics_process(delta: float) -> void:
@@ -149,12 +153,12 @@ func _jump():
 var is_hooked : bool = false
 var hook_target : Vector3 = Vector3.ZERO
 var hook_accelaration : Vector3 = Vector3.ZERO
+@onready var raycast : RayCast3D = self.find_child("grappling_hook_targeting_raycast")
 
 const FLAG_NONGRAPPLEABLE = 1 << 8
 
 func attach_hook():
 	#if is_hooked: return
-	var raycast : RayCast3D = self.find_child("grappling_hook_targeting_raycast")
 	if not raycast.is_colliding(): return
 	var collider = raycast.get_collider()
 	if bool(collider.collision_layer & FLAG_NONGRAPPLEABLE): return
