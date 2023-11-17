@@ -22,7 +22,8 @@ func _ready():
 			)
 	)
 	UI.countdown_panel.countdown_finished.connect(end_pregame)
-	
+	UI.win_panel.finished.connect(end_game)
+
 func _input(event):
 	if get_viewport().gui_get_focus_owner() != null: return
 	var just_pressed = event.is_pressed() and not event.is_echo()
@@ -30,20 +31,17 @@ func _input(event):
 		restart_game()
 		return
 	if Input.is_key_pressed(KEY_E) and just_pressed:
-		if game_in_progress:
-			start_postgame()
-		explore.emit()
-		exploring = true
-		UI.practice_controls.show()
-		GameStopwatch.reset()
-		UI.new_game_panel.hide()
-		return
-	if Input.is_key_pressed(KEY_N) and just_pressed:
-		if game_in_progress:
-			start_postgame()
-		end_game()
-		UI.new_game_panel.show()
-		return
+		start_explore()
+
+func start_explore():
+	if game_in_progress:
+		start_postgame()
+	explore.emit()
+	exploring = true
+	UI.practice_controls.show()
+	GameStopwatch.reset()
+	UI.new_game_panel.hide()
+	return
 
 func start_game(zone_count = 5, _seed = null, rehash = true):
 	print("Starting %s zone game with seed %s." % [zone_count, _seed])
@@ -77,11 +75,11 @@ func register_package_zone_completion(zone : PackageZone):
 		start_postgame()
 
 func start_postgame():
+	print("Player wins!")
 	GameStopwatch.stop()
 	PackageZoneManager.set_active_zones([])
-	print("You win! Your time was: %s" % [GameStopwatch.time])
+	UI.win_panel.display_time(GameStopwatch.time)
 	postgame_started.emit()
 
 func end_game():
-	game_in_progress = false
-	game_ended.emit()
+	start_explore()

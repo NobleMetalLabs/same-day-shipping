@@ -17,4 +17,5 @@ func _ready():
 				}
 			)
 			self.hide()
+			UI.escape_menu.toggle_paused()
 	)

@@ -10,7 +10,6 @@ extends Panel
 func _ready():
 	newgame_button.pressed.connect(
 		func():
-			toggle_paused()
 			UI.new_game_panel.popup()
 	)
 	restart_button.pressed.connect(
