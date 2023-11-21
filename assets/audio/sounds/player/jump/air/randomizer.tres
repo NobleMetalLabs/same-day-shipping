@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://dba32hfd54mrv"]
+
+[ext_resource type="AudioStream" uid="uid://cwfk8hkjrlvs4" path="res://assets/audio/sounds/player/jump/air/Jumpjet_JetStart_Chuff_ST_v2_01.wav" id="1_jbp8t"]
+[ext_resource type="AudioStream" uid="uid://bmupqwxe4r81h" path="res://assets/audio/sounds/player/jump/air/Jumpjet_JetStart_Chuff_ST_v2_02.wav" id="2_23evm"]
+[ext_resource type="AudioStream" uid="uid://dh2gghxditayg" path="res://assets/audio/sounds/player/jump/air/Jumpjet_JetStart_Chuff_ST_v2_03.wav" id="3_buyxy"]
+[ext_resource type="AudioStream" uid="uid://sunwwbiwux0l" path="res://assets/audio/sounds/player/jump/air/Jumpjet_JetStart_Chuff_ST_v2_04.wav" id="4_leodh"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_jbp8t")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_23evm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_buyxy")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_leodh")
+stream_3/weight = 1.0
