@@ -203,8 +203,9 @@ func _slide():
 			is_sliding = false
 			end_slide()
 	else:
-		is_sliding = false
-		end_slide()
+		if is_sliding:
+			is_sliding = false
+			end_slide()
 
 #	self.floor_stop_on_slope = not is_sliding
 
