@@ -10,7 +10,7 @@ var gravity_vec: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravi
 
 var look_dir_delta: Vector2 # Input direction for look/aim
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 1.25 # m
 var jump_velocity = -gravity_vec * sqrt(-2.0 * -gravity * jump_height) #vi = sqrt(vf^2 - 2gΔy)
 @export var jump_time: float = 1 #s
 
@@ -139,16 +139,27 @@ var current_friction_coeff : float = STANDING_FRICTION_COEFF
 func _friction():
 	var vel = self.horizontal_velocity
 	if _is_on_floor_extended:
-		vel *= current_friction_coeff ** delta_time #TODO: REWORK FRICTION FOR MORE RESPONSIVE STOPPING FROM HIGH SPEEDS
+		vel *= current_friction_coeff ** delta_time 
 	DEBUG_VECTORS.set_dir("friction", self.horizontal_velocity - vel)
 	self.horizontal_velocity = vel
 
 func _gravity():
 	velocity += gravity_vec * gravity * delta_time
 
+var can_double_jump : bool = true
 func _jump():
-	if Input.is_action_just_pressed("jump") and _is_on_floor:
-		velocity += jump_velocity
+	if Input.is_action_just_pressed("jump"):
+		if _is_on_floor:
+			velocity += jump_velocity
+		elif can_double_jump:
+			if velocity.y < 0:
+				velocity.y = jump_velocity.y
+			else:
+				velocity += jump_velocity
+			can_double_jump = false
+
+	if _is_on_floor:
+		can_double_jump = true
 
 var is_hooked : bool = false
 var hook_target : Vector3 = Vector3.ZERO
