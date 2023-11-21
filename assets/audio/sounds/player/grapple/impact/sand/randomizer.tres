@@ -1,12 +1,13 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://bboenns8fregw"]
 
-[ext_resource type="AudioStream" uid="uid://cbdl6qdgocn5w" path="res://assets/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_01.wav" id="1_mh1in"]
-[ext_resource type="AudioStream" uid="uid://c85feyhx1wr5" path="res://assets/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_02.wav" id="2_0rai2"]
-[ext_resource type="AudioStream" uid="uid://jrwd034i1moa" path="res://assets/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_03.wav" id="3_3lkby"]
-[ext_resource type="AudioStream" uid="uid://dn6dubxrnfjtc" path="res://assets/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_04.wav" id="4_2tdis"]
+[ext_resource type="AudioStream" uid="uid://cbdl6qdgocn5w" path="res://assets/audio/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_01.wav" id="1_mh1in"]
+[ext_resource type="AudioStream" uid="uid://c85feyhx1wr5" path="res://assets/audio/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_02.wav" id="2_0rai2"]
+[ext_resource type="AudioStream" uid="uid://jrwd034i1moa" path="res://assets/audio/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_03.wav" id="3_3lkby"]
+[ext_resource type="AudioStream" uid="uid://dn6dubxrnfjtc" path="res://assets/audio/sounds/player/grapple/impact/sand/imp_grapple_sand_2ch_v1_04.wav" id="4_2tdis"]
 
 [resource]
 streams_count = 4
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_mh1in")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_0rai2")

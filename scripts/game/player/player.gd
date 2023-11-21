@@ -151,14 +151,14 @@ func _jump():
 	if Input.is_action_just_pressed("jump"):
 		if _is_on_floor:
 			velocity += jump_velocity
-			AudioDispatcher.dispatch_3d_audio(self, "sounds/player/jump/grounded", "SFX")
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/grounded/", 0.3, "SFX")
 		elif can_double_jump:
 			if velocity.y < 0:
 				velocity.y = jump_velocity.y
 			else:
 				velocity += jump_velocity
 			can_double_jump = false
-			AudioDispatcher.dispatch_3d_audio(self, "sounds/player/jump/air", "SFX")
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/air", 0.5, "SFX")
 
 	if _is_on_floor:
 		can_double_jump = true
@@ -227,8 +227,8 @@ func start_slide():
 	current_friction_coeff = SLIDING_FRICTION_COEFF
 	slide_friction_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	slide_friction_tween.tween_property(self, "current_friction_coeff", STANDING_FRICTION_COEFF, SLIDING_TIME_TO_LERP_FRICTION)
-	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_3d_audio.bind(self, "sounds/player/slide/grass/end", "SFX"))
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/grass/start", "SFX")
+	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_audio.bind(self, "sounds/player/slide/grass/end", 0.2, "SFX"))
+	AudioDispatcher.dispatch_audio(self, "sounds/player/slide/grass/start", 0.2, "SFX")
 	AudioDispatcher.end("sounds/player/slide/clothgear/end", 0.25)
 
 func end_slide():
@@ -236,7 +236,7 @@ func end_slide():
 	current_friction_coeff = STANDING_FRICTION_COEFF
 	if slide_friction_tween: slide_friction_tween.kill()
 	AudioDispatcher.end("sounds/player/slide/grass/start", 1)
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end", "SFX")
+	AudioDispatcher.dispatch_audio(self, "sounds/player/slide/clothgear/end", 0.2, "SFX")
 
 var practice_position : Transform3D
 var practice_velocity : Vector3

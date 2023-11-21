@@ -7,7 +7,6 @@ func reset():
 	zones = []
 
 func register_package_zone(zone : PackageZone):
-	#print("Added ['%s'] to zones" % [zone.zone_name])
 	zones.append(zone)
 	zone.set_enabled(false)
 
@@ -21,9 +20,5 @@ func set_active_zones(active_zones : Array[PackageZone]):
 	for zone in zones:
 		var enabled = zone in active_zones
 		zone.set_enabled(enabled)
-		# print("%s zone '%s'" % [
-		# 	"Enabled" if enabled else "Disabled", 
-		# 	zone.zone_name
-		# ])
 
 

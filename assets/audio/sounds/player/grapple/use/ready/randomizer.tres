@@ -1,8 +1,9 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://x6jqun3enarw"]
 
-[ext_resource type="AudioStream" uid="uid://qb7hxprailld" path="res://assets/sounds/player/grapple/use/ready/pilot_grapple_ready_2ch_v1_01.wav" id="1_0j3rj"]
+[ext_resource type="AudioStream" uid="uid://qb7hxprailld" path="res://assets/audio/sounds/player/grapple/use/ready/pilot_grapple_ready_2ch_v1_01.wav" id="1_0j3rj"]
 
 [resource]
 streams_count = 1
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_0j3rj")
 stream_0/weight = 1.0
