@@ -82,4 +82,5 @@ func start_postgame():
 	postgame_started.emit()
 
 func end_game():
+	game_in_progress = false
 	start_explore()

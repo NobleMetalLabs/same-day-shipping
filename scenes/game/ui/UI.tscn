@@ -121,7 +121,8 @@ offset_left = -313.0
 offset_top = -26.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "(R)estart          (E)xplore          (N)ew Game"
+text = "(R)estart          (E)xplore"
+horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="HUD/Control"]
 layout_mode = 1

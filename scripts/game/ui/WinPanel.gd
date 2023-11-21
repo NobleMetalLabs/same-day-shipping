@@ -9,6 +9,7 @@ signal finished()
 func _ready():
 	timer.timeout.connect(
 		func(): 
+			print('Hiding now!')
 			self.hide()
 			finished.emit()
 	)

@@ -151,14 +151,14 @@ func _jump():
 	if Input.is_action_just_pressed("jump"):
 		if _is_on_floor:
 			velocity += jump_velocity
-			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/grounded/", 0.3, "SFX")
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/grounded/", 0.1, "SFX")
 		elif can_double_jump:
 			if velocity.y < 0:
 				velocity.y = jump_velocity.y
 			else:
 				velocity += jump_velocity
 			can_double_jump = false
-			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/air", 0.5, "SFX")
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/air", 0.3, "SFX")
 
 	if _is_on_floor:
 		can_double_jump = true

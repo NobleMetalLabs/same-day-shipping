@@ -28,7 +28,8 @@ func _ready():
 	mainmenu_button.pressed.connect(
 		func():
 			toggle_paused()
-			get_tree().change_scene_to_file("res://scenes/MAINMENU.tscn")
+			#get_tree().change_scene_to_file("res://scenes/MAINMENU.tscn")
+			get_tree().quit()
 	)
 
 func _input(event):
