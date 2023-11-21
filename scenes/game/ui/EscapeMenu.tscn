@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc8i1t5ittoa7"]
+
+[ext_resource type="Script" path="res://scripts/game/ui/EscapeMenu.gd" id="1_naose"]
+
+[node name="ESCAPE_MENU" type="Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -117.5
+offset_right = 150.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_naose")
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ButtonsStack" type="VBoxContainer" parent="Margins"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NEWGAME-BUTTON" type="Button" parent="Margins/ButtonsStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NEW GAME"
+
+[node name="RESTART-BUTTON" type="Button" parent="Margins/ButtonsStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESTART GAME"
+
+[node name="GUIDES-BUTTON" type="Button" parent="Margins/ButtonsStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "GUIDES"
+
+[node name="OPTIONS-BUTTON" type="Button" parent="Margins/ButtonsStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "OPTIONS"
+
+[node name="MAINMENU-BUTTON" type="Button" parent="Margins/ButtonsStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EXIT TO MENU"

@@ -14,7 +14,7 @@ func _free_audioplayer(audio_name : String):
 	currently_playing_audios.erase(audio_name)
 	currently_ending_audios.erase(audio_name)
 
-func dispatch_audio(parent : Node, audio_name : StringName) -> AudioStreamPlayer:
+func dispatch_audio(parent : Node, audio_name : StringName, volume : float = 0, bus : StringName = "Master") -> AudioStreamPlayer:
 	var stream := AudioStreamPlayer.new()
 	if currently_playing_audios.has(audio_name):
 		stream = currently_playing_audios[audio_name]
@@ -22,13 +22,15 @@ func dispatch_audio(parent : Node, audio_name : StringName) -> AudioStreamPlayer
 			currently_ending_audios[audio_name].kill()
 	else:
 		stream.stream = _get_audio_stream(audio_name)
+		currently_playing_audios[audio_name] = stream
 		parent.add_child(stream)
 	stream.play()
-	stream.volume_db = 0
+	stream.bus = bus
+	stream.volume_db = linear_to_db(volume)
 	stream.finished.connect(func(): _free_audioplayer(audio_name))
 	return stream
 
-func dispatch_3d_audio(parent : Node, audio_name : StringName) -> AudioStreamPlayer3D:
+func dispatch_3d_audio(parent : Node, audio_name : StringName, volume : float = 0, bus : StringName = "Master") -> AudioStreamPlayer3D:
 	var stream := AudioStreamPlayer3D.new()
 	if currently_playing_audios.has(audio_name):
 		stream = currently_playing_audios[audio_name]
@@ -39,7 +41,8 @@ func dispatch_3d_audio(parent : Node, audio_name : StringName) -> AudioStreamPla
 		currently_playing_audios[audio_name] = stream
 		parent.add_child(stream)
 	stream.play()
-	stream.volume_db = 0
+	stream.bus = bus
+	stream.volume_db = linear_to_db(volume)
 	stream.finished.connect(func(): _free_audioplayer(audio_name))
 	return stream
 
@@ -50,3 +53,4 @@ func end(audio_name : StringName, fadeout_time : float = 0.0):
 	tween.tween_property(stream, "volume_db", -100, fadeout_time)
 	tween.tween_callback(_free_audioplayer.bind(audio_name))
 	currently_ending_audios[audio_name] = tween
+ 

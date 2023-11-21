@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Guide" load_steps=2 format=3 uid="uid://dqxcokjp8f2ap"]
+
+[ext_resource type="Script" path="res://scripts/resources/Guide.gd" id="1_6tq2b"]
+
+[resource]
+script = ExtResource("1_6tq2b")
+title = &"Air Strafing"
+text = "Air Strafing is a foundational technique to preserve momentum.
+ 
+When turning a corner (to the left, for sake of example), release the forward movement key, and hold and left movement key while turning to face left.
+
+"

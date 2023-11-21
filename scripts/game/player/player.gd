@@ -8,10 +8,9 @@ var gravity_vec: Vector3 = ProjectSettings.get_setting("physics/3d/default_gravi
 
 @export_range(0.1, 9.25, 0.05, "or_greater") var camera_sens: float = 3
 
-var mouse_captured: bool = false
 var look_dir_delta: Vector2 # Input direction for look/aim
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 1.25 # m
 var jump_velocity = -gravity_vec * sqrt(-2.0 * -gravity * jump_height) #vi = sqrt(vf^2 - 2gΔy)
 @export var jump_time: float = 1 #s
 
@@ -35,11 +34,11 @@ func _ready() -> void:
 	GameStateManager.explore.connect(
 		func():
 			cant_move = false
-			capture_mouse()
+			UI.capture_mouse()
 	)
 	GameStateManager.pregame_started.connect(
 		func():
-			capture_mouse()
+			UI.capture_mouse()
 	)
 	GameStateManager.game_started.connect(
 		func():
@@ -47,9 +46,13 @@ func _ready() -> void:
 	)
 	GameStateManager.game_ended.connect(
 		func():
-			print("FUCK")
-			release_mouse()
+			UI.release_mouse()
 			cant_move = true
+	)
+	UI.capture_mouse()
+	UI.settings_popup.mouse_sens_slider.value_changed.connect(
+		func(value):
+			camera_sens = value
 	)
 
 var cant_move : bool = true
@@ -68,13 +71,16 @@ func _input(event: InputEvent) -> void:
 		goto_practice_position()
 		return
 
+func _process(_delta):
+	if raycast.is_colliding(): UI.cross_hair.border_color = Color.RED
+	else: UI.cross_hair.border_color = Color.BLACK
+
 var delta_time : float
 
 func _physics_process(delta: float) -> void:
 	delta_time = delta
-	if mouse_captured: _rotate_camera()
+	if UI.mouse_captured: _rotate_camera()
 	
-
 	_state()
 	if not cant_move: _wish_dir()
 	if not cant_move: _hook()
@@ -88,14 +94,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	DEBUG_VECTORS.set_dir("velocity", self.velocity)
-
-func capture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	mouse_captured = true
-
-func release_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	mouse_captured = false
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	self.rotation.y -= look_dir_delta.x * camera_sens * sens_mod * delta_time
@@ -141,26 +139,39 @@ var current_friction_coeff : float = STANDING_FRICTION_COEFF
 func _friction():
 	var vel = self.horizontal_velocity
 	if _is_on_floor_extended:
-		vel *= current_friction_coeff ** delta_time #TODO: REWORK FRICTION FOR MORE RESPONSIVE STOPPING FROM HIGH SPEEDS
+		vel *= current_friction_coeff ** delta_time 
 	DEBUG_VECTORS.set_dir("friction", self.horizontal_velocity - vel)
 	self.horizontal_velocity = vel
 
 func _gravity():
 	velocity += gravity_vec * gravity * delta_time
 
+var can_double_jump : bool = true
 func _jump():
-	if Input.is_action_just_pressed("jump") and _is_on_floor:
-		velocity += jump_velocity
+	if Input.is_action_just_pressed("jump"):
+		if _is_on_floor:
+			velocity += jump_velocity
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/grounded/", 0.3, "SFX")
+		elif can_double_jump:
+			if velocity.y < 0:
+				velocity.y = jump_velocity.y
+			else:
+				velocity += jump_velocity
+			can_double_jump = false
+			AudioDispatcher.dispatch_audio(self, "sounds/player/jump/air", 0.5, "SFX")
+
+	if _is_on_floor:
+		can_double_jump = true
 
 var is_hooked : bool = false
 var hook_target : Vector3 = Vector3.ZERO
 var hook_accelaration : Vector3 = Vector3.ZERO
+@onready var raycast : RayCast3D = self.find_child("grappling_hook_targeting_raycast")
 
 const FLAG_NONGRAPPLEABLE = 1 << 8
 
 func attach_hook():
 	#if is_hooked: return
-	var raycast : RayCast3D = self.find_child("grappling_hook_targeting_raycast")
 	if not raycast.is_colliding(): return
 	var collider = raycast.get_collider()
 	if bool(collider.collision_layer & FLAG_NONGRAPPLEABLE): return
@@ -192,8 +203,6 @@ func _hook():
 	var additional_hook_speed = clampf(MAX_HOOK_SPEED - HOOK_SPEED, 0, MAX_HOOK_ACCEL * delta_time)
 	hook_accelaration = target_dir * additional_hook_speed
 	velocity += hook_accelaration
-	#print(hook_target)
-	#print(self.basis * hook_target)
 	self.find_child("grappling_hook_obstruction_raycast").target_position = self.to_local(hook_target) * 0.9
 
 var is_sliding : bool = false
@@ -207,8 +216,9 @@ func _slide():
 			is_sliding = false
 			end_slide()
 	else:
-		is_sliding = false
-		end_slide()
+		if is_sliding:
+			is_sliding = false
+			end_slide()
 
 #	self.floor_stop_on_slope = not is_sliding
 
@@ -217,8 +227,8 @@ func start_slide():
 	current_friction_coeff = SLIDING_FRICTION_COEFF
 	slide_friction_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	slide_friction_tween.tween_property(self, "current_friction_coeff", STANDING_FRICTION_COEFF, SLIDING_TIME_TO_LERP_FRICTION)
-	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_3d_audio.bind(self, "sounds/player/slide/grass/end"))
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/grass/start")
+	slide_friction_tween.tween_callback(AudioDispatcher.dispatch_audio.bind(self, "sounds/player/slide/grass/end", 0.2, "SFX"))
+	AudioDispatcher.dispatch_audio(self, "sounds/player/slide/grass/start", 0.2, "SFX")
 	AudioDispatcher.end("sounds/player/slide/clothgear/end", 0.25)
 
 func end_slide():
@@ -226,7 +236,7 @@ func end_slide():
 	current_friction_coeff = STANDING_FRICTION_COEFF
 	if slide_friction_tween: slide_friction_tween.kill()
 	AudioDispatcher.end("sounds/player/slide/grass/start", 1)
-	AudioDispatcher.dispatch_3d_audio(self, "sounds/player/slide/clothgear/end")
+	AudioDispatcher.dispatch_audio(self, "sounds/player/slide/clothgear/end", 0.2, "SFX")
 
 var practice_position : Transform3D
 var practice_velocity : Vector3

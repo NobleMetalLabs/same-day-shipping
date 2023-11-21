@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://cgdg66sjk7x31"]
+
+[ext_resource type="AudioStream" uid="uid://cp7dtqh51vmo6" path="res://assets/audio/sounds/player/jump/grounded/mvmt_human_1p_fs_jump_2ch_v1_01.wav" id="1_depxq"]
+[ext_resource type="AudioStream" uid="uid://bfp5x535pth8f" path="res://assets/audio/sounds/player/jump/grounded/mvmt_human_1p_fs_jump_2ch_v1_02.wav" id="2_dw41n"]
+[ext_resource type="AudioStream" uid="uid://co0o0awqk7wcj" path="res://assets/audio/sounds/player/jump/grounded/mvmt_human_1p_fs_jump_2ch_v1_04.wav" id="3_xrok6"]
+[ext_resource type="AudioStream" uid="uid://dk5c0xugqkujy" path="res://assets/audio/sounds/player/jump/grounded/mvmt_human_1p_fs_jump_2ch_v1_06.wav" id="4_dooks"]
+[ext_resource type="AudioStream" uid="uid://2suhb46a33ol" path="res://assets/audio/sounds/player/jump/grounded/mvmt_human_1p_fs_jump_2ch_v1_11.wav" id="5_hdmji"]
+
+[resource]
+streams_count = 5
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_depxq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_dw41n")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_xrok6")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_dooks")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_hdmji")
+stream_4/weight = 1.0

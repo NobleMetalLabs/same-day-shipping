@@ -4,24 +4,22 @@
 [ext_resource type="Script" path="res://scripts/game/ui/FocusAwareSpinbox.gd" id="2_dap12"]
 [ext_resource type="Script" path="res://scripts/game/ui/FocusAwareControl.gd" id="3_hv201"]
 
-[node name="NewGamePanel" type="Panel"]
-custom_minimum_size = Vector2(300, 200)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="NewGamePanel" type="PopupPanel"]
+size = Vector2i(300, 250)
+visible = true
 script = ExtResource("1_2j5o4")
 
 [node name="Margins" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 5
@@ -42,6 +40,7 @@ vertical_alignment = 1
 
 [node name="OptionsStack" type="VBoxContainer" parent="Margins/TitleStack"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 15
 
 [node name="DestinationCount" type="HBoxContainer" parent="Margins/TitleStack/OptionsStack"]

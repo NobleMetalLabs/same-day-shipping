@@ -1,12 +1,13 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://cjcgyp415klpf"]
 
-[ext_resource type="AudioStream" uid="uid://coi0fncm7fy08" path="res://assets/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_01.wav" id="1_xmrhd"]
-[ext_resource type="AudioStream" uid="uid://c7hh8kgdey68d" path="res://assets/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_02.wav" id="2_cvdma"]
-[ext_resource type="AudioStream" uid="uid://uu71hqacmqit" path="res://assets/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_03.wav" id="3_83sjq"]
-[ext_resource type="AudioStream" uid="uid://c4xkmgtbxa2cm" path="res://assets/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_04.wav" id="4_hqgm8"]
+[ext_resource type="AudioStream" uid="uid://coi0fncm7fy08" path="res://assets/audio/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_01.wav" id="1_xmrhd"]
+[ext_resource type="AudioStream" uid="uid://c7hh8kgdey68d" path="res://assets/audio/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_02.wav" id="2_cvdma"]
+[ext_resource type="AudioStream" uid="uid://uu71hqacmqit" path="res://assets/audio/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_03.wav" id="3_83sjq"]
+[ext_resource type="AudioStream" uid="uid://c4xkmgtbxa2cm" path="res://assets/audio/sounds/player/grapple/impact/metal/imp_grapple_solidmetal_2ch_v1_04.wav" id="4_hqgm8"]
 
 [resource]
 streams_count = 4
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_xmrhd")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_cvdma")

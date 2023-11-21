@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Guide" load_steps=2 format=3 uid="uid://b128wxt4ldeye"]
+
+[ext_resource type="Script" path="res://scripts/resources/Guide.gd" id="1_51ts7"]
+
+[resource]
+script = ExtResource("1_51ts7")
+title = &"Movement"
+text = "Movement in Same Day Shipping is, at its simplest:
+
+1. Gain speed
+2. Keep it
+
+Other guides provide insight on movement techniques you can use to do one, the other, or in many cases both at once.
+"

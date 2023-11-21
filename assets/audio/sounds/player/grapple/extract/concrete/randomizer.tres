@@ -1,12 +1,13 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://c6elygvxfdep"]
 
-[ext_resource type="AudioStream" uid="uid://ckd8ur7xgxa01" path="res://assets/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_01.wav" id="1_7fsnh"]
-[ext_resource type="AudioStream" uid="uid://dx4nkki1esdn4" path="res://assets/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_02.wav" id="2_pdsmc"]
-[ext_resource type="AudioStream" uid="uid://cjahf8orrfx56" path="res://assets/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_03.wav" id="3_74s3n"]
-[ext_resource type="AudioStream" uid="uid://dwdjppf31j0lv" path="res://assets/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_04.wav" id="4_03hsx"]
+[ext_resource type="AudioStream" uid="uid://ckd8ur7xgxa01" path="res://assets/audio/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_01.wav" id="1_7fsnh"]
+[ext_resource type="AudioStream" uid="uid://dx4nkki1esdn4" path="res://assets/audio/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_02.wav" id="2_pdsmc"]
+[ext_resource type="AudioStream" uid="uid://cjahf8orrfx56" path="res://assets/audio/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_03.wav" id="3_74s3n"]
+[ext_resource type="AudioStream" uid="uid://dwdjppf31j0lv" path="res://assets/audio/sounds/player/grapple/extract/concrete/extract_grapple_concrete_2ch_v1_04.wav" id="4_03hsx"]
 
 [resource]
 streams_count = 4
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_7fsnh")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_pdsmc")

@@ -1,5 +1,5 @@
 class_name NewGamePanel
-extends Panel
+extends PopupPanel
 
 signal new_game_requested(game_options : Dictionary)
 
@@ -17,4 +17,5 @@ func _ready():
 				}
 			)
 			self.hide()
+			UI.escape_menu.toggle_paused()
 	)

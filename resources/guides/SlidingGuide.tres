@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Guide" load_steps=2 format=3 uid="uid://cjfrbt2p7uvdm"]
+
+[ext_resource type="Script" path="res://scripts/resources/Guide.gd" id="1_v6n0b"]
+
+[resource]
+script = ExtResource("1_v6n0b")
+title = &"Sliding"
+text = "Sliding is another foundational technique to know. 
+
+It has two main benefits:
+The obvious one, you can fit under tall things.
+The less obvious, you experience little to know fricition in the beginning moments of a slide.
+
+Repeatedly jumping out of slides--or slidehopping--is an easy way to maintain momentum by minimizing speed loss to friction.
+"

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://conhwwg6txvy"]
+[gd_scene load_steps=8 format=3 uid="uid://conhwwg6txvy"]
 
 [ext_resource type="PackedScene" uid="uid://1foa2euwwg63" path="res://scenes/game/ui/NewGamePanel.tscn" id="1_0u5ot"]
 [ext_resource type="Script" path="res://scripts/game/ui/UI.gd" id="1_2wjvs"]
 [ext_resource type="PackedScene" uid="uid://1yjtudp4xvsi" path="res://scenes/game/ui/CountdownPanel.tscn" id="2_2cmfg"]
+[ext_resource type="PackedScene" uid="uid://bc8i1t5ittoa7" path="res://scenes/game/ui/EscapeMenu.tscn" id="2_mbxgr"]
+[ext_resource type="Script" path="res://scripts/game/ui/WinPanel.gd" id="2_q8eli"]
+[ext_resource type="PackedScene" uid="uid://go6i81amt0le" path="res://scenes/game/ui/GuidesPanel.tscn" id="4_0u61v"]
+[ext_resource type="PackedScene" uid="uid://drjauw7tj56rl" path="res://scenes/game/ui/SettingsPopup.tscn" id="5_jnnvo"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -13,21 +17,83 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2wjvs")
 
+[node name="WIN_PANEL" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_top = 200.0
+offset_right = 221.5
+offset_bottom = 300.0
+grow_horizontal = 2
+script = ExtResource("2_q8eli")
+
+[node name="MarginContainer" type="MarginContainer" parent="WIN_PANEL"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WIN_PANEL/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WIN_PANEL/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Complete!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TEXT" type="Label" parent="WIN_PANEL/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "You delivered all packages in <time>."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TIMER" type="Timer" parent="WIN_PANEL"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="ESCAPE_MENU" parent="." instance=ExtResource("2_mbxgr")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="NEW_GAME_PANEL" parent="." instance=ExtResource("1_0u5ot")]
 unique_name_in_owner = true
-layout_mode = 1
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+process_mode = 3
+initial_position = 2
+visible = false
 
 [node name="COUNTDOWN_PANEL" parent="." instance=ExtResource("2_2cmfg")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_top = -354.0
 offset_bottom = -254.0
 
-[node name="Control" type="MarginContainer" parent="."]
+[node name="SETTINGS_POPUP" parent="." instance=ExtResource("5_jnnvo")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GUIDES_PANEL" parent="." instance=ExtResource("4_0u61v")]
+unique_name_in_owner = true
+visible = false
+
+[node name="HUD" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,11 +106,11 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Control" type="Control" parent="Control"]
+[node name="Control" type="Control" parent="HUD"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label3" type="Label" parent="Control/Control"]
+[node name="Label3" type="Label" parent="HUD/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -57,7 +123,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "(R)estart          (E)xplore          (N)ew Game"
 
-[node name="Label2" type="Label" parent="Control/Control"]
+[node name="Label2" type="Label" parent="HUD/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -67,7 +133,7 @@ offset_right = 313.0
 grow_vertical = 0
 text = "(WASD) Move     (SPACE) Jump     (Q) Grapple     (MOUSE2) Slide"
 
-[node name="PRACTICE_CONTROLS" type="Label" parent="Control/Control"]
+[node name="PRACTICE_CONTROLS" type="Label" parent="HUD/Control"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -80,3 +146,21 @@ offset_bottom = -28.0
 grow_vertical = 0
 text = "(Z) Set Practice Position
 (X) Go to Practice Position"
+
+[node name="CROSSHAIR" type="ReferenceRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 3.0
+editor_only = false

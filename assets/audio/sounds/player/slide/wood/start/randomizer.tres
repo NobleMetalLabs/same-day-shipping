@@ -6,6 +6,7 @@
 
 [resource]
 streams_count = 3
+random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("1_q3o64")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_hs7tp")
